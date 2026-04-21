@@ -1,0 +1,791 @@
+{
+    "home": "À LA UNE",
+    "tamkine": "Tamkine",
+    "president_word": "MOT DU PRÉSIDENT",
+    "foundation": "FONDATION TAMKINE",
+    "values": "NOS VALEURS",
+    "missions": "NOS MISSIONS",
+    "team": "NOTRE ÉQUIPE",
+    "programms": "Programmes",
+    "news": "Actualités",
+    "platformss": "Plateformes",
+    "partner_activities": "Activités Partenaires",
+    "media": "Communication & Médias",
+    "videotheque": "Videothèque",
+    "phototheque": "Photothèque",
+    "downloads": "Téléchargement",
+    "join_us": "Nous rejoindre",
+    "contact_us": "Contactez-nous",
+    "community": "Communauté",
+    "become_partner": "Devenir Partenaire",
+    "media_partnerss": "Partenaires Medias",
+    "Nouvelles récentes": "Nouvelles récentes",
+    "À LA UNE": "À LA UNE",
+    "Dernière nouvelle": "Dernière nouvelle",
+
+
+    "title": "Actualités",
+    "featuredLabel": "À LA UNE",
+    "featuredSubtitle": "L'actualité du moment",
+    "imageNotAvailable": "Image non disponible",
+    "readFullArticle": "Lire l'article complet",
+    "collapseArticle": "Réduire l'article",
+    "recentNews": "Actualités récentes",
+    "noMatch": "Aucun article ne correspond à votre recherche.",
+    "readMore": "Lire plus",
+    "readLess": "Réduire",
+    "loadError": "Erreur lors du chargement des actualités",
+
+
+        "Nos Plateformes": "Nos Plateformes",
+        "Tutoring": "Tutoring",
+        "Orientation": "Orientation",
+        "Séminaires": "Séminaires",
+        "Tamtech Connect": "Tamtech Connect",
+        "JPOV": "JPOV",
+        "Bourses": "Bourses",
+        "À Propos": "À Propos",
+        "Qui sommes-nous ?": "Qui sommes-nous ?",
+        "Contacter Tamkine": "Contacter Tamkine",
+        "Nous rejoindre": "Nous rejoindre",
+        "Notre Localisation": "Notre Localisation",
+        "Agrandir": "Agrandir",
+        "Restez informé": "Restez informé",
+        "Recevez les dernières actualités de la Fondation Tamkine": "Recevez les dernières actualités de la Fondation Tamkine",
+        "S'abonner": "S'abonner",
+        "Votre email": "Votre email",
+        "Merci pour votre abonnement !": "Merci pour votre abonnement !",
+        "Une erreur est survenue.": "Une erreur est survenue.",
+        "Erreur serveur, veuillez réessayer plus tard.": "Erreur serveur, veuillez réessayer plus tard.",
+        "Fondation dédiée à l'éducation et au développement des compétences": "Fondation dédiée à l'éducation et au développement des compétences",
+      
+      
+        
+        
+            "Contactez-nous": "Contactez-nous",
+            "Nous sommes à votre écoute et vous répondrons dans les meilleurs délais. N'hésitez pas à nous faire part de vos questions ou commentaires.": "Nous sommes à votre écoute et vous répondrons dans les meilleurs délais. N'hésitez pas à nous faire part de vos questions ou commentaires.",
+            "Nom complet": "Nom complet",
+            "Votre nom et prénom": "Votre nom et prénom",
+            "Email": "Email",
+            "votre.email@exemple.com": "votre.email@exemple.com",
+            "Sujet": "Sujet",
+            "Objet de votre message": "Objet de votre message",
+            "Catégorie": "Catégorie",
+            "Question générale": "Question générale",
+            "Support technique": "Support technique",
+            "Facturation": "Facturation",
+            "Partenariat": "Partenariat",
+            "Commentaires et suggestions": "Commentaires et suggestions",
+            "Message": "Message",
+            "Détaillez votre demande ici...": "Détaillez votre demande ici...",
+            "Envoyer le message": "Envoyer le message",
+            "Envoi en cours...": "Envoi en cours...",
+            "Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.": "Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.",
+            "Une erreur est survenue lors de l'envoi du message.": "Une erreur est survenue lors de l'envoi du message.",
+            "Erreur de connexion au serveur, veuillez réessayer plus tard.": "Erreur de connexion au serveur, veuillez réessayer plus tard.",
+            "Vos données personnelles ne seront utilisées que pour répondre à votre demande et ne seront pas partagées avec des tiers.": "Vos données personnelles ne seront utilisées que pour répondre à votre demande et ne seront pas partagées avec des tiers.",
+            "contact@tamkine.org": "contact@tamkine.org",
+                "Téléphone": "Téléphone",
+                "Heures d'ouverture": "Heures d'ouverture",
+                "Lun - Ven: 9h - 18h": "Lun - Ven: 9h - 18h",
+            
+
+
+                
+                    "NNos Partenaires et Sponsors": "Nos Partenaires et Sponsors",
+                    "Découvrez les organisations médiatiques qui soutiennent la mission et les initiatives de la Fondation Tamkine.": "Découvrez les organisations médiatiques qui soutiennent la mission et les initiatives de la Fondation Tamkine.",
+                    "Filtrer par catégorie": "Filtrer par catégorie",
+                    "Chargement des partenaires...": "Chargement des partenaires...",
+                    "Réessayer": "Réessayer",
+                    "Aucun partenaire trouvé pour cette catégorie.": "Aucun partenaire trouvé pour cette catégorie.",
+                    "Aucune image": "Aucune image",
+                    "Localisation:": "Localisation :",
+                    "Établi:": "Établi :",
+                    " Visiter le site": "Visiter le site",
+                    " Site non disponible": "Site non disponible",
+
+
+
+        
+                        "Communauté Tamkine": "Communauté Tamkine",
+                        "Ensemble pour une éducation de qualité pour tous": "Ensemble pour une éducation de qualité pour tous",
+                        "Notre Communauté": "Notre Communauté",
+                        "Le nombre des membres de la Communauté Tamkine connait une multiplication continue": "Le nombre des membres de la Communauté Tamkine connait une multiplication continue",
+                        "La Communauté Tamkine regroupe :": "La Communauté Tamkine regroupe :",
+                        "Les élèves de toutes origines [...]": "Les élèves de toutes origines [...]",
+                        "Les parents de ces élèves ;": "Les parents de ces élèves ;",
+                        "Les instituteurs, enseignants, inspecteurs [...]": "Les instituteurs, enseignants, inspecteurs [...]",
+                        "Les entités de gestion et d'administration éducative ;": "Les entités de gestion et d'administration éducative ;",
+                        "La Société Civile ;": "La Société Civile ;",
+                        "Des citoyens du monde entier.": "Des citoyens du monde entier.",
+                        "Bénéficier de la carte de membre de la Communauté Tamkine": "Bénéficier de la carte de membre de la Communauté Tamkine",
+                        "Être membre de la Famille Tamkine, c'est tout d'abord et avant tout démontrer [...]": "Être membre de la Famille Tamkine, c'est tout d'abord et avant tout démontrer [...]",
+                        "N'attendez plus, venez nous rejoindre [...]": "N'attendez plus, venez nous rejoindre [...]",
+                        "L'éducation est la pierre angulaire du développement [...] ": "L'éducation est la pierre angulaire du développement [...] ",
+                        "Rejoignez la Communauté Tamkine": "Rejoignez la Communauté Tamkine",
+                        "Nom *": "Nom *",
+                        "Prénom *": "Prénom *",
+                        "Rôle *": "Rôle *",
+                        "-- Sélectionnez votre rôle --": "-- Sélectionnez votre rôle --",
+                        "Enseignant": "Enseignant",
+                        "Parent d'élève": "Parent d'élève",
+                        "Élève": "Élève",
+                        "Autre": "Autre",
+                        "Téléphone * ": "Téléphone * ",
+                        "J'accepte les conditions générales CNDP": "J'accepte les conditions générales CNDP",
+                        "Envoyer": "Envoyer",
+                        "Votre demande d'adhésion a été envoyée avec succès !": "Votre demande d'adhésion a été envoyée avec succès !",
+                        "Erreur :": "Erreur :",
+                        "Vérifiez les champs du formulaire.": "Vérifiez les champs du formulaire.",
+                        "Une erreur est survenue lors de l'envoi du formulaire.": "Une erreur est survenue lors de l'envoi du formulaire.",
+
+
+
+                        
+                            "Prêt à rejoindre notre communauté ?": "Prêt à rejoindre notre communauté ?",
+                            "Transformez votre approche éducative et bénéficiez d'un accompagnement personnalisé pour intégrer efficacement les solutions numériques.": "Transformez votre approche éducative et bénéficiez d'un accompagnement personnalisé pour intégrer efficacement les solutions numériques.",
+                            "Devenir partenaire": "Devenir partenaire",
+                            "Nos Partenaires Médias": "Nos Partenaires Médias",
+                            "Découvrez les organisations médiatiques qui soutiennent la mission et les initiatives de la Fondation Tamkine.": "Découvrez les organisations médiatiques qui soutiennent la mission et les initiatives de la Fondation Tamkine.",
+                            "Les avantages de notre partenariat": "Les avantages de notre partenariat",
+                            "Formation & Certification": "Formation & Certification",
+                            "Formation complète et certification des enseignants assurées dans le cadre du partenariat.": "Formation complète et certification des enseignants assurées dans le cadre du partenariat.",
+                            "Encadrement pédagogique": "Encadrement pédagogique",
+                            "Bénéficiez d'un accompagnement personnalisé par nos experts en éducation numérique.": "Bénéficiez d'un accompagnement personnalisé par nos experts en éducation numérique.",
+                            "Outils numériques": "Outils numériques",
+                            "Accès à des outils et ressources numériques innovants pour transformer l'expérience d'apprentissage.": "Accès à des outils et ressources numériques innovants pour transformer l'expérience d'apprentissage.",
+                            "Réseau professionnel": "Réseau professionnel",
+                            "Intégrez un réseau dynamique de partenaires et participez à des événements exclusifs.": "Intégrez un réseau dynamique de partenaires et participez à des événements exclusifs.",
+                            "Visibilité médiatique": "Visibilité médiatique",
+                            "Opportunités de promotion via nos canaux de communication et médias partenaires.": "Opportunités de promotion via nos canaux de communication et médias partenaires.",
+                            "Support technique": "Support technique",
+                            "Assistance technique et maintenance continue pour tous vos projets numériques.": "Assistance technique et maintenance continue pour tous vos projets numériques.",
+                            "Devenez notre partenaire": "Devenez notre partenaire",
+                            "Bénéficiez de tous les avantages, outils et accompagnements numériques que nous mettrons à votre disposition.": "Bénéficiez de tous les avantages, outils et accompagnements numériques que nous mettrons à votre disposition.",
+                            "En effet, collaborer avec la Fondation Tamkine, c'est bénéficier d'un accompagnement immédiat à tous les niveaux :": "En effet, collaborer avec la Fondation Tamkine, c'est bénéficier d'un accompagnement immédiat à tous les niveaux :",
+                            "Formation, certification et encadrement des enseignants sont assurés dans le cadre de ce partenariat.": "Formation, certification et encadrement des enseignants sont assurés dans le cadre de ce partenariat.",
+                            "Votre demande a été envoyée avec succès. Nos équipes vous contacteront très prochainement.": "Votre demande a été envoyée avec succès. Nos équipes vous contacteront très prochainement.",
+                            "Rôle": "Rôle",
+                            "Sélectionnez votre rôle": "Sélectionnez votre rôle",
+                            "Enseignant": "Enseignant",
+                            "Parent d'élève": "Parent d'élève",
+                            "Élève": "Élève",
+                            "Autre": "Autre",
+                            "Nom": "Nom",
+                            "Votre nom": "Votre nom",
+                            "Prénom": "Prénom",
+                            "Votre prénom": "Votre prénom",
+                            "Organisation": "Organization",
+                            "Site web": "Website",
+                            "Envoyer la demande": "Submit Request",
+                                "votre@email.com": "votre@email.com",
+                                "Nom de votre organisation": "Nom de votre organisation",
+                                "www.votresite.com": "https://www.votresite.com",
+                                "Votre numéro de téléphone": "Votre numéro de téléphone",
+                                "Décrivez votre projet ou vos besoins en détail": "Décrivez votre projet ou vos besoins en détail",
+
+
+                                
+                                    "Vidéothèque": "Vidéothèque",
+                                    "Découvrez notre collection de vidéos éducatives pour enrichir votre expérience d'apprentissage.": "Découvrez notre collection de vidéos éducatives pour enrichir votre expérience d'apprentissage.",
+                                    "Rechercher une vidéo...": "Rechercher une vidéo...",
+                                    "Actualiser": "Actualiser",
+                                    "Chargement des vidéos...": "Chargement des vidéos...",
+                                    "Réessayer": "Réessayer",
+                                    "Autres vidéos": "Autres vidéos",
+                                    "Toutes les vidéos": "Toutes les vidéos",
+                                    "Voir la vidéo": "Voir la vidéo",
+                                    "Plein écran": "Plein écran",
+                                    "Aucun résultat trouvé pour": "Aucun résultat trouvé pour",
+                                    "Effacer la recherche": "Effacer la recherche",
+                                    "Aucune vidéo disponible.": "Aucune vidéo disponible.",
+                                    "Explorez notre collection de vidéos": "Explorez notre collection de vidéos",
+                                    "Découvrez des contenus éducatifs innovants pour enrichir votre expérience d'apprentissage et développer de nouvelles compétences.": "Découvrez des contenus éducatifs innovants pour enrichir votre expérience d'apprentissage et développer de nouvelles compétences.",
+                                    "Découvrir les vidéos": "Découvrir les vidéos",
+
+
+                                    
+                                        
+                                            "Phototheque":"Phototheque",
+                                            "Découvrez notre collection de photos illustrant les activités et événements de notre fondation": "Découvrez notre collection de photos illustrant les activités et événements de notre fondation",
+                                            "Rechercher des photos...": "Rechercher des photos...",
+                                            "Vue grille": "Vue grille",
+                                            "Vue chronologique": "Vue chronologique",
+                                            "Agrandir l'image": "Agrandir l'image",
+                                            "Réinitialiser la position": "Réinitialiser la position",
+                                            "Voir plus": "Voir plus",
+                                            "Voir moins": "Voir moins",
+                                            "Fermer": "Fermer",
+                                          
+
+
+
+                                            
+                                                "FONDATION DOCUMENTS": "FONDATION DOCUMENTS",
+                                                "Centre de documentation officiel": "Centre de documentation officiel",
+                                                "Documents disponibles": "Documents disponibles",
+                                                "Vue Liste": "Vue Liste",
+                                                "Vue Grille": "Vue Grille",
+                                                "Rechercher un document...": "Rechercher un document...",
+                                                "Télécharger": "Télécharger", 
+
+
+                                                
+                                                    "Erreur lors du chargement des plateformes": "Erreur lors du chargement des plateformes",
+                                                    "Notre écosystème de plateformes": "Notre écosystème de plateformes",
+                                                    "Découvrez les différentes plateformes et initiatives de notre fondation pour maximiser notre impact collectif.": "Découvrez les différentes plateformes et initiatives de notre fondation pour maximiser notre impact collectif.",
+                                                    "Aucune plateforme n'est disponible pour le moment.": "Aucune plateforme n'est disponible pour le moment.",
+                                                    "Image non disponible": "Image non disponible",
+                                                    "Pas de description disponible": "Pas de description disponible",
+                                                    "Ajouté le ": "Ajouté le ",
+                                                    "Visiter": "Visiter",
+
+
+                                                    
+  "Actualités": "Actualités",
+  "EN DIRECT DU TERRAIN": "EN DIRECT DU TERRAIN",
+  "Retrouvez les dernières nouvelles du Jorfof Basket Club, les matchs récents et les moments forts !": "Retrouvez les dernières nouvelles du Jorfof Basket Club, les matchs récents et les moments forts !",
+  "Chargement des actualités...": "Chargement des actualités...",
+  "Erreur": "Erreur",
+  "À LA UNE": "À LA UNE",
+  "Pas d'image disponible": "Pas d'image disponible",
+  "Lire plus": "Lire plus",
+  "Autres actualités": "Autres actualités",
+  "Aucune actualité disponible pour le moment.": "Aucune actualité disponible pour le moment.",
+
+
+  
+                                                      
+
+                                                    
+                                                        "Nos Programmes": "Nos Programmes",
+                                                        "Découvrez les différents programmes et initiatives de notre fondation pour maximiser notre impact collectif.": "Découvrez les différents programmes et initiatives de notre fondation pour maximiser notre impact collectif.",
+                                                        "Rechercher un programme...": "Rechercher un programme...",
+                                                        "Rechercher un programme": "Rechercher un programme",
+                                                        "Chargement des programmes...": "Chargement des programmes...",
+                                                        "Erreur": "Erreur",
+                                                        "Aucun programme ne correspond à votre recherche.": "Aucun programme ne correspond à votre recherche.",
+                                                        "Effacer la recherche": "Effacer la recherche",
+                                                        "Réduire": "Réduire",
+                                                        "Lire plus": "Lire plus",
+                                                        "Intéressé par nos programmes ?": "Intéressé par nos programmes ?",
+                                                        "Rejoignez nos initiatives et contribuez à transformer l'éducation numérique avec la Fondation Tamkine.": "Rejoignez nos initiatives et contribuez à transformer l'éducation numérique avec la Fondation Tamkine.",
+                                                        "Nous contacter": "Nous contacter",
+                                                        "Erreur lors du chargement des programmes.": "Erreur lors du chargement des programmes.",
+
+
+
+                                                        
+                                                            "Actualités": "Actualités",
+                                                            "Découvrez les dernières nouvelles et mises à jour de la Fondation Tamkine": "Découvrez les dernières nouvelles et mises à jour de la Fondation Tamkine",
+                                                            "Rechercher un programme...": "Rechercher un programme...",
+                                                            "Effacer la recherche": "Effacer la recherche",
+                                                            "Chargement des actualités...": "Chargement des actualités...",
+                                                            "Erreur": "Erreur",
+                                                            "Erreur lors du chargement": "Erreur lors du chargement",
+                                                            "À LA UNE": "À LA UNE",
+                                                            "Dernière nouvelle": "Dernière nouvelle",
+                                                            "Pas d'image disponible": "Pas d'image disponible",
+                                                            "Réduire": "Réduire",
+                                                            "Lire plus": "Lire plus",
+                                                            "Nouvelles récentes": "Nouvelles récentes",
+                                                            "Aucune actualité ne correspond à votre recherche.": "Aucune actualité ne correspond à votre recherche.",
+                                                            "Aucune actualité disponible pour le moment.": "Aucune actualité disponible pour le moment.",
+                                                            "Lire moins": "Lire moins",
+                                                            "Mission & Vision": "NOTRE MISSION & VISION",
+
+                                                            "programs": {
+    "cta_title": "Rejoignez la révolution éducative numérique",
+    "cta_description": "Ensemble, construisons un avenir où chaque apprenant a accès aux outils numériques qui transformeront son parcours éducatif. Votre implication peut faire la différence.",
+    "show_less": "Afficher moins",
+    "read_more": "Lire la suite",
+    "search_placeholder": "Rechercher un programme...",
+    "title": "Nos programmes",
+    "subtitle": "Découvrez nos offres éducatives adaptées à vos besoins." 
+  },
+  
+    "platforms": {
+      "title": "Nos plateformes",
+      "subtitle": "Explorez les plateformes disponibles pour vous accompagner.",
+      "search_placeholder": "Rechercher une plateforme...",
+      "search_aria_label": "Champ de recherche de plateforme",
+      "no_platforms": "Aucune plateforme trouvée.",
+      "clear_search": "Effacer la recherche",
+      "date_unavailable": "Date non disponible",
+      "image_unavailable": "Image non disponible",
+      "untitled": "Sans titre",
+      "no_description": "Aucune description disponible"
+    },
+    "common": {
+      "loading": "Chargement...",
+      "error": "Une erreur est survenue"
+    },
+    "errors": {
+      "loading_platforms": "Impossible de charger les plateformes.",
+      "fetch_error": "Erreur lors de la récupération des données:"
+    },
+
+    
+      "activities": {
+        "title": "Nos Activités",
+        "subtitle": "Découvrez les dernières initiatives, ateliers et événements que nous avons organisés.",
+        "search_placeholder": "Rechercher une activité...",
+        "search_aria_label": "Champ de recherche d’activités",
+        "no_activities": "Aucune activité trouvée.",
+        "clear_search": "Réinitialiser la recherche",
+        "date_unavailable": "Date non disponible",
+        "image_unavailable": "Image non disponible"
+      },
+      "common": {
+        "loading": "Chargement...",
+        "error": "Une erreur est survenue"
+      },
+      "errors": {
+        "loading_activities": "Erreur lors du chargement des activités",
+        "fetch_error": "Erreur de récupération des données"
+      },
+      
+        "media_partners": {
+          "title": "Médias partenaires",
+          "subtitle": "Découvrez nos partenaires médias et leurs activités.",
+          "search_placeholder": "Rechercher un partenaire...",
+          "search_aria_label": "Champ de recherche des partenaires médias",
+          "filters": {
+            "title": "Filtres",
+            "clear_all": "Tout effacer",
+            "category": "Catégorie",
+            "all_categories": "Toutes les catégories",
+            "year": "Année",
+            "all_years": "Toutes les années",
+            "month": "Mois",
+            "all_months": "Tous les mois",
+            "activity": "Activité",
+            "all_activities": "Toutes les activités"
+          },
+          "errors": {
+            "loading_error": "Erreur lors du chargement des partenaires médias.",
+            "fetch_error": "Erreur lors de la récupération des partenaires médias."
+          },
+          "retry": "Réessayer"
+        },
+        "common": {
+          "loading": "Chargement...",
+          "error": "Erreur"
+        },
+      
+  "calendar": {
+    "title": "CALENDRIER",
+    "search_placeholder": "Rechercher un match...",
+    "loading": "Chargement des matchs...",
+    "no_matches": "Aucun match programmé pour le moment.",
+    "show_details": "Voir les détails",
+    "hide_details": "Masquer les détails",
+    "no_description": "Aucune description disponible pour ce match.",
+    "error": "Une erreur est survenue lors du chargement des matchs.",
+    "join_title": "REJOIGNEZ-NOUS !",
+    "join_text": "Suivez nos actualités et venez encourager le Jorfof Club à chaque match !",
+    "contact_us": "Nous contacter",
+    "join_us": "Nous rejoindre"
+  }, 
+
+  "partner": {
+  "title": "Nos Partenaires",
+
+  "subtitle": {
+    "part1": "Découvrez les partenaires qui soutiennent",
+    "club": "TEKACOM",
+    "part2": "dans son aventure industrielle !"
+  },
+
+  "section_title": "Partenaires Officiels",
+  "section_subtitle": "Ils croient en notre vision",
+
+  "loading": "Chargement des partenaires...",
+  "no_partners_title": "Aucun partenaire disponible",
+  "no_partners_text": "Revenez bientôt pour découvrir nos partenaires.",
+
+  "cta_title": "REJOIGNEZ NOS PARTENAIRES",
+  "cta_text": {
+    "part1": "Soutenez",
+    "club": "VIALI",
+    "part2": "et participez à notre passion commune : la fabrication de sardines et de thon de qualité."
+  },
+  "cta_button": "DEVENIR PARTENAIRE"
+},
+
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur"
+  }, 
+
+  
+  "nav": {
+    "news": "Actualités",
+    "Viali": "A propos",
+    "president_word": "Mot du Président",
+    "missions": "Mission",
+    "team": "Équipe",
+    "calendrier": "Calendrier",
+    "medias": "Médias",
+    "photos": "Photothèque",
+    "videos": "Vidéothèque",
+    "partenaires": "Partenaires",
+    "join_us": "Nous Rejoindre",
+    "contact": "Nous Contacter",
+    "community": "Communauté",
+    "home": "Acceuil",
+    "viali_presentation": "Présentation de Viali",
+    "slogan": "TEKACOM a remplir",
+    "values":"Nos Valeurs",
+    "product":"Produits",
+    "sardine":"Sardine",
+    "tuna":"Thon",
+    "recipes":"Recettes",
+    "profesionnalarea":"Espace Professionnel"
+  }, 
+
+  
+  "recipes": {
+    "title": "Recettes de Sardine",
+    "subtitle": "Découvrez nos délicieuses recettes à base de sardine",
+    "errorTitle": "Erreur de chargement",
+    "retry": "Réessayer",
+    "empty": "Aucune recette trouvée",
+    "emptyDesc": "Il n'y a actuellement aucune recette active. Revenez plus tard !",
+    "untitled": "Recette sans titre",
+    "ctaTitle": "Explorez toutes nos recettes",
+    "ctaDesc": "Découvrez une sélection unique de recettes savoureuses à base de sardine, testées et approuvées par nos chefs.",
+    "ctaButton": "Voir toutes les recettes",
+    "badge": "Recette spéciale",
+    "recipeTitle": "Description de la recette",
+    "infoTitle": "Note",
+    "infoText": "Ces recettes sont conçues pour être faciles à suivre et délicieuses.",
+    "footerNote": "Recettes mises à jour régulièrement",
+    "contact": "Contactez-nous",
+    "close": "Fermer"
+  },
+
+  
+  "thonRecipes": {
+    "title": "Recettes de Thon",
+    "subtitle": "Découvrez nos délicieuses recettes à base de thon, savoureuses et faciles à préparer",
+
+    "errorTitle": "Erreur de chargement",
+    "retry": "Réessayer",
+
+    "empty": "Aucune recette disponible",
+    "emptyDesc": "Il n'y a actuellement aucune recette active. Revenez plus tard.",
+
+    "untitled": "Recette sans titre",
+
+    "ctaTitle": "Explorez toutes nos recettes",
+    "ctaDesc": "Découvrez une sélection unique de recettes savoureuses à base de thon, soigneusement préparées pour vous inspirer au quotidien.",
+    "ctaButton": "Nous contacter",
+
+    "badge": "Recette spéciale",
+
+    "recipeTitle": "Description de la recette",
+
+    "infoTitle": "Information",
+    "infoText": "Ces recettes sont présentées à titre indicatif et peuvent être adaptées selon vos préférences.",
+
+    "footerNote": "Recettes mises à jour régulièrement",
+
+    "contact": "Contactez-nous",
+    "close": "Fermer"
+  },
+  
+  "team": {
+    "title": "Notre Équipe",
+    "title2": "Les talents qui font notre entreprise",
+    "subtitle": "Découvrez les membres qui font battre le cœur du club.",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "all": "Tous",
+    "players": "Joueurs",
+    "coaches": "Entraîneurs",
+    "staffs": "Staffs",
+    "player": "Joueur",
+    "coach": "Entraîneur",
+    "assistant": "Assistant",
+    "staff": "Staff technique",
+    "manager": "Manager",
+    "no_members": "Aucun membre trouvé"
+  },
+
+  
+  
+  "missions": {
+    "loading": "Chargement...",
+    "title2": "Découvrez les missions qui façonnent notre vision",
+    "error": "Erreur",
+    "empty": "Aucune mission trouvée",
+    "empty_desc": "Revenez bientôt pour découvrir nos prochaines missions.",
+    "title": "Nos Missions et Valeurs",
+    "published": "Publié le",
+    "our_mission": "Notre Mission",
+    "vision": "Leadership",
+    "objective": "Excellence",
+    "impact": "Succès",
+    "commitments": "Nos Engagements",
+    "commitment_1": "Former les futurs champions",
+    "commitment_2": "Promouvoir l'esprit d'équipe",
+    "commitment_3": "Développer les talents locaux",
+    "commitment_4": "Inspirer la nouvelle génération",
+    "cta_title": "Rejoignez Notre Mission",
+    "cta_text": "Ensemble, construisons l'avenir du basketball.",
+    "contact_us": "Nous Contacter",
+    "join_us": "Nous Rejoindre"
+  },
+
+  
+  "sardine": {
+    "title": "Produits de Sardine",
+    "subtitle": "Découvrez notre gamme de sardines de qualité supérieure",
+
+    "errorTitle": "Erreur de chargement",
+    "retry": "Réessayer",
+
+    "noProducts": "Aucun produit disponible",
+    "noProductsDesc": "Nos produits arrivent bientôt. Revenez plus tard.",
+
+    "untitled": "Sans titre",
+
+    "ctaTitle": "INTÉRESSÉ PAR NOS PRODUITS ?",
+    "ctaDesc": "Contactez VIALI pour plus d'informations sur notre gamme complète de produits à base de sardine",
+    "ctaButton": "NOUS CONTACTER",
+
+    "available": "Produit disponible",
+
+    "infoTitle": "Information",
+    "infoText": "Pour toute commande ou information complémentaire, n'hésitez pas à nous contacter.",
+
+    "footerNote": "Produit de qualité supérieure",
+
+    "order": "Commander",
+    "close": "Fermer"
+  },
+
+  "thon": {
+    "title": "Produits de Thon",
+    "subtitle": "Découvrez notre gamme de sardines de qualité supérieure",
+
+    "errorTitle": "Erreur de chargement",
+    "retry": "Réessayer",
+
+    "noProducts": "Aucun produit disponible",
+    "noProductsDesc": "Nos produits arrivent bientôt. Revenez plus tard.",
+
+    "untitled": "Sans titre",
+
+    "ctaTitle": "INTÉRESSÉ PAR NOS PRODUITS ?",
+    "ctaDesc": "Contactez VIALI pour plus d'informations sur notre gamme complète de produits à base de thon",
+    "ctaButton": "NOUS CONTACTER",
+
+    "available": "Produit disponible",
+
+    "infoTitle": "Information",
+    "infoText": "Pour toute commande ou information complémentaire, n'hésitez pas à nous contacter.",
+
+    "footerNote": "Produit de qualité supérieure",
+
+    "order": "Commander",
+    "close": "Fermer"
+  },
+  
+  "values": {
+    "title": "NOS VALEURS",
+    "loading": "Chargement des valeurs...",
+    "error": "Erreur de chargement",
+    "empty": "Aucune valeur disponible",
+    "empty_desc": "Revenez bientôt pour découvrir nos valeurs",
+    "published": "Publié le",
+    "our_core": "Notre Essence",
+    "respect": "Respect",
+    "integrity": "Intégrité",
+    "excellence": "Excellence",
+    "key_principles": "Nos Principes Fondamentaux",
+    "principle_1": "Le respect mutuel et la solidarité entre tous les membres du club",
+    "principle_2": "L'esprit d'équipe et la collaboration pour atteindre nos objectifs communs",
+    "principle_3": "La discipline et l'engagement dans chaque entraînement et compétition",
+    "principle_4": "Le fair-play et l'intégrité sur et en dehors du terrain",
+    "cta_title": "Partagez Nos Valeurs !",
+    "cta_text": "Rejoignez une communauté qui place l'humain et l'excellence au cœur de chaque action",
+    "contact_us": "Nous Contacter",
+    "join_us": "Rejoindre le Club"
+  },
+
+  
+  "president": {
+    "loading": "Chargement du message du président...",
+    "error": "Une erreur est survenue",
+    "empty": "Aucun message disponible",
+    "empty_desc": "Le mot du président n’est pas encore disponible. Revenez bientôt !",
+    "title": "Le mot du Président",
+    "published": "Publié le",
+    "message_from": "Message du président",
+    "president_name": "M. Youssouf Fofana",
+    "president_role": "Président du Jorfof Basket Club",
+    "cta_title": "Rejoignez l’esprit Jorfof Basket Club",
+    "cta_text": "Partageons ensemble les valeurs du sport, du dépassement de soi et de la solidarité. Le basket est bien plus qu’un jeu : c’est une passion qui nous unit.",
+    "cta_button": "Découvrir le club"
+  },
+
+
+  "videotheque": {
+    "title": "VIDÉOTHÈQUE",
+    "description": "Découvrez notre collection de vidéos éducatives pour enrichir votre expérience d'apprentissage",
+    "search": "Rechercher",
+    "refresh": "Actualiser",
+    "loading": "Chargement...",
+    "loading_videos": "Chargement des vidéos...",
+    "fullscreen": "Plein écran",
+    "other_videos": "Autres vidéos",
+    "all_videos": "Toutes les vidéos",
+    "error": "Erreur",
+    "retry": "Réessayer",
+    "no_videos_found": "Aucune vidéo trouvée",
+    "clear_search": "Effacer la recherche",
+    "view": "Voir",
+    "search_title": "Rechercher une vidéo",
+    "search_placeholder": "Tapez le titre d'une vidéo...",
+    "results_found": "résultat",
+    "results_found_plural": "résultats trouvés",
+    "close": "Fermer"
+  },
+  
+  "phototheque": {
+    "titre": "PHOTOTHÈQUE",
+    "sous_titre": "Découvrez notre collection de photos illustrant nos activités et événements.",
+    "recherche": "Rechercher...",
+    "photos": "photos",
+    "aucun_album": "Aucun album trouvé",
+    "chargement": "Chargement...",
+    "erreur_chargement": "Erreur lors du chargement des albums ou des photos."
+  
+},
+
+
+  "news": {
+    "title": "Actualités",
+    "subtitle": "Découvrez nos dernières actualités et mises à jour",
+    "loading": "Chargement des actualités...",
+    "errorTitle": "Erreur de chargement",
+    "retry": "Réessayer",
+    "noNews": "Aucune actualité",
+    "noNewsDesc": "Aucune actualité n'est disponible pour le moment.",
+    "readMore": "Lire la suite",
+    "close": "Fermer",
+    "page": "Page",
+    "previousPage": "Page précédente",
+    "nextPage": "Page suivante"
+  },
+
+  "home": {
+    "title": "Bienvenue sur notre site",
+    "loading": "Chargement en cours...",
+    "error": "Erreur lors du chargement",
+    "no_content": "Aucun contenu trouvé",
+    "president_message": "Message du Président",
+    "president_name": "M. Youssouf Fofana",
+    "president_role": "President de Jorfof Basket Club",
+    "latest_news": "Dernières actualités",
+    "calendar": "Calendrier des matchs",
+    "team": "Notre Équipe",
+    "videos": "Vidéothèque",
+    "partners": "Nos Partenaires"
+  
+},
+
+
+  
+  "Jorfof Club": "Jorfof Club",
+  "Toujours Prêt à Gagner !": "Toujours Prêt à Gagner !",
+
+  "Rejoignez notre communauté": "Rejoignez notre communauté",
+  "Partagez vos idées, vos motivations et votre passion pour le basketball avec la famille Jorfof.": "Partagez vos idées, vos motivations et votre passion pour le basketball avec la famille Jorfof.",
+
+  "Formulaire de contact": "Formulaire de contact",
+  "Nom complet": "Nom complet",
+  "Votre nom complet": "Votre nom complet",
+  "Email": "Email",
+  "votre.email@exemple.com": "votre.email@exemple.com",
+  "Rôle": "Rôle",
+  "-- Sélectionnez votre rôle --": "-- Sélectionnez votre rôle --",
+  "Joueur": "Joueur",
+  "Entraîneur": "Entraîneur",
+  "Supporter": "Supporter",
+  "Bénévole": "Bénévole",
+  "Autres": "Autres",
+  "Message": "Message",
+  "Partagez votre motivation ou votre message...": "Partagez votre motivation ou votre message...",
+
+  "Envoyer": "Envoyer",
+  "Envoi en cours...": "Envoi en cours...",
+
+  "✅ Votre message a été envoyé avec succès !": "✅ Votre message a été envoyé avec succès !",
+  "❌ Une erreur s'est produite.": "❌ Une erreur s'est produite.",
+  "⚠️ Impossible d'envoyer le formulaire pour le moment.": "⚠️ Impossible d'envoyer le formulaire pour le moment."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+    
+                                                
+                                                          
+                                                      
+                                                      
+                                                  
+                                                  
+                                              
+                                              
+                                      
+                                      
+                                  
+                                  
+                                  
+                            
+                              
+                          
+                          
+                  
+                  
+              
+          
+          
+          
+          
+      
+  
+
+  
+   
+  
+  
+  

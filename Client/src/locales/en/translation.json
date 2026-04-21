@@ -1,0 +1,794 @@
+{
+  "home": "HEADLINE",
+  "tamkine": "Tamkine",
+  "president_word": "PRESIDENT'S WORD",
+  "foundation": "TAMKINE FOUNDATION",
+  "values": "OUR VALUES",
+  "missions": "Our Missions",
+  "team": "OUR TEAM",
+  "programms": "Programs",
+  "news": "News",
+  "platformss": "Platforms",
+  "partner_activities": "Partner Activities",
+  "media": "Communication & Media",
+  "videotheque": "Videotheque",
+  "phototheque": "Phototheque",
+  "downloads": "Downloads",
+  "join_us": "Join Us",
+  "contact_us": "Contact Us",
+  "community": "Community",
+  "become_partner": "Become a Partner",
+  "media_partnerss": "Media Partners",
+  "Nouvelles récentes": "Recent News",
+  "À LA UNE": "Featured",
+  "Dernière nouvelle": "Latest News",
+
+
+  "title": "News",
+  "featuredLabel": "HIGHLIGHT",
+  "featuredSubtitle": "Current headline",
+  "imageNotAvailable": "Image not available",
+  "readFullArticle": "Read full article",
+  "collapseArticle": "Collapse article",
+  "recentNews": "Recent news",
+  "noMatch": "No articles match your search.",
+  "readMore": "Read more",
+  "readLess": "Read less",
+  "loadError": "Error loading news",
+
+
+  
+  
+    "Nos Plateformes": "Our Platforms",
+    "Tutoring": "Tutoring",
+    "Orientation": "Orientation",
+    "Séminaires": "Seminars",
+    "Tamtech Connect": "Tamtech Connect",
+    "JPOV": "JPOV",
+    "Bourses": "Scholarships",
+    "À Propos": "About Us",
+    "Qui sommes-nous ?": "Who Are We?",
+    "Contacter Tamkine": "Contact Tamkine",
+    "Nous rejoindre": "Join Us",
+    "Notre Localisation": "Our Location",
+    "Agrandir": "Enlarge",
+    "Restez informé": "Stay Informed",
+    "Recevez les dernières actualités de la Fondation Tamkine": "Receive the latest news from Tamkine Foundation",
+    "S'abonner": "Subscribe",
+    "Votre email": "Your email",
+    "Merci pour votre abonnement !": "Thank you for your subscription!",
+    "Une erreur est survenue.": "An error occurred.",
+    "Erreur serveur, veuillez réessayer plus tard.": "Server error, please try again later.",
+    "Fondation dédiée à l'éducation et au développement des compétences": "Foundation dedicated to education and skill development", 
+
+    
+    
+      "Contactez-nous": "Contact Us",
+      "Nous sommes à votre écoute et vous répondrons dans les meilleurs délais. N'hésitez pas à nous faire part de vos questions ou commentaires.": "We are here to assist you and will respond as soon as possible. Feel free to share any questions or comments.",
+      "Nom complet": "Full Name",
+      "Votre nom et prénom": "Your full name",
+      "Email": "Email",
+      "votre.email@exemple.com": "your.email@example.com",
+      "Sujet": "Subject",
+      "Objet de votre message": "Your message's subject",
+      "Catégorie": "Category",
+      "Question générale": "General inquiry",
+      "Support technique": "Technical support",
+      "Facturation": "Billing",
+      "Partenariat": "Partnership",
+      "Commentaires et suggestions": "Feedback and suggestions",
+      "Message": "Message",
+      "Détaillez votre demande ici...": "Detail your request here...",
+      "Envoyer le message": "Send Message",
+      "Envoi en cours...": "Sending in progress...",
+      "Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.": "Your message has been sent successfully. We will respond as soon as possible.",
+      "Une erreur est survenue lors de l'envoi du message.": "An error occurred while sending the message.",
+      "Erreur de connexion au serveur, veuillez réessayer plus tard.": "Server connection error, please try again later.",
+      "Vos données personnelles ne seront utilisées que pour répondre à votre demande et ne seront pas partagées avec des tiers.": "Your personal data will only be used to respond to your request and will not be shared with third parties.",
+      "contact@tamkine.org": "contact@tamkine.org", 
+      
+        "Téléphone": "Phone",
+        "Heures d'ouverture": "Opening Hours",
+        "Lun - Ven: 9h - 18h": "Mon - Fri: 9 AM - 6 PM",
+
+
+        
+          "Nos Partenaires et Sponsors": "Our Partners and Sponsors",
+          "Découvrez les organisations médiatiques qui soutiennent la mission et les initiatives de la Fondation Tamkine.": "Discover the media organizations supporting the mission and initiatives of the Tamkine Foundation.",
+          "Filtrer par catégorie": "Filter by category",
+          "Chargement des partenaires...": "Loading partners...",
+          "Réessayer": "Retry",
+          "Aucun partenaire trouvé pour cette catégorie.": "No partner found for this category.",
+          "Aucune image": "No image",
+          "Localisation:": "Location:",
+          "Établi:": "Established:",
+          " Visiter le site": "Visit website",
+          " Site non disponible": "Website not available",
+
+
+          
+            "Communauté Tamkine": "Tamkine Community",
+            "Ensemble pour une éducation de qualité pour tous": "Together for quality education for all",
+            "Notre Communauté": "Our Community",
+            "Le nombre des membres de la Communauté Tamkine connait une multiplication continue": "The number of Tamkine Community members is continuously growing",
+            "La Communauté Tamkine regroupe :": "The Tamkine Community includes:",
+            "Les élèves de toutes origines [...]": "Students from all backgrounds [...]",
+            "Les parents de ces élèves ;": "Their parents;",
+            "Les instituteurs, enseignants, inspecteurs [...]": "Teachers, instructors, and inspectors [...]",
+            "Les entités de gestion et d'administration éducative ;": "Educational management and administrative entities;",
+            "La Société Civile ;": "Civil Society;",
+            "Des citoyens du monde entier.": "Citizens from all over the world.",
+            "Bénéficier de la carte de membre de la Communauté Tamkine [...]": "Enjoying the Tamkine Community membership card gives you access to many benefits.",
+            "Être membre de la Famille Tamkine, c'est tout d'abord et avant tout démontrer [...]": "Being a member of the Tamkine Family means first and foremost showing [...]",
+            "N'attendez plus, venez nous rejoindre [...]": "Don’t wait any longer, come join us [...]",
+            "L'éducation est la pierre angulaire du développement [...] ": "Education is the cornerstone of development [...]",
+            "Rejoignez la Communauté Tamkine": "Join the Tamkine Community",
+            "Nom *": "Last Name *",
+            "Prénom *": "First Name *",
+            "Rôle *": "Role *",
+            "-- Sélectionnez votre rôle --": "-- Select your role --",
+            "Enseignant": "Teacher",
+            "Parent d'élève": "Parent",
+            "Élève": "Student",
+            "Autre": "Other",
+            "Téléphone * ": "Phone * ",
+            "J'accepte les conditions générales CNDP": "I accept the CNDP general conditions",
+            "Envoyer": "Submit",
+            "Votre demande d'adhésion a été envoyée avec succès !": "Your membership request was successfully sent!",
+            "Erreur :": "Error:",
+            "Vérifiez les champs du formulaire.": "Check the form fields.",
+            "Une erreur est survenue lors de l'envoi du formulaire.": "An error occurred while submitting the form.",
+
+
+
+            
+              "Prêt à rejoindre notre communauté ?": "Ready to join our community?",
+              "Transformez votre approche éducative et bénéficiez d'un accompagnement personnalisé pour intégrer efficacement les solutions numériques.": "Transform your educational approach and receive personalized support to effectively integrate digital solutions.",
+              "Devenir partenaire": "Become a partner",
+              "Nos Partenaires Médias": "Our Media Partners",
+              "Découvrez les organisations médiatiques qui soutiennent la mission et les initiatives de la Fondation Tamkine.": "Discover the media organizations supporting the mission and initiatives of the Tamkine Foundation.",
+              "Les avantages de notre partenariat": "The benefits of our partnership",
+              "Formation & Certification": "Training & Certification",
+              "Formation complète et certification des enseignants assurées dans le cadre du partenariat.": "Complete training and certification of teachers are provided as part of the partnership.",
+              "Encadrement pédagogique": "Pedagogical Support",
+              "Bénéficiez d'un accompagnement personnalisé par nos experts en éducation numérique.": "Receive personalized support from our digital education experts.",
+              "Outils numériques": "Digital Tools",
+              "Accès à des outils et ressources numériques innovants pour transformer l'expérience d'apprentissage.": "Access to innovative digital tools and resources to transform the learning experience.",
+              "Réseau professionnel": "Professional Network",
+              "Intégrez un réseau dynamique de partenaires et participez à des événements exclusifs.": "Join a dynamic network of partners and participate in exclusive events.",
+              "Visibilité médiatique": "Media Visibility",
+              "Opportunités de promotion via nos canaux de communication et médias partenaires.": "Opportunities for promotion through our communication channels and partner media.",
+              "Support technique": "Technical Support",
+              "Assistance technique et maintenance continue pour tous vos projets numériques.": "Technical support and ongoing maintenance for all your digital projects.",
+              "Devenez notre partenaire": "Become our partner",
+              "Bénéficiez de tous les avantages, outils et accompagnements numériques que nous mettrons à votre disposition.": "Benefit from all the advantages, tools, and digital support we will provide.",
+              "En effet, collaborer avec la Fondation Tamkine, c'est bénéficier d'un accompagnement immédiat à tous les niveaux :": "Indeed, partnering with the Tamkine Foundation means immediate support at all levels:",
+              "Formation, certification et encadrement des enseignants sont assurés dans le cadre de ce partenariat.": "Training, certification, and teacher support are ensured as part of this partnership.",
+              "Votre demande a été envoyée avec succès. Nos équipes vous contacteront très prochainement.": "Your request has been successfully submitted. Our teams will contact you shortly.",
+              "Rôle": "Role",
+              "Sélectionnez votre rôle": "Select your role",
+              "Enseignant": "Teacher",
+              "Parent d'élève": "Parent",
+              "Élève": "Student",
+              "Autre": "Other",
+              "Nom": "Last Name",
+              "Votre nom": "Your last name",
+              "Prénom": "First Name",
+              "Votre prénom": "Your first name",
+              "Organisation": "Organization",
+              "En effet, collaborer avec la Fondation Tamkine, c'est bénéficier d'un accompagnement immédiat à tous les niveaux :": "Indeed, partnering with the Tamkine Foundation means immediate support at all levels:",
+              "Prénom *": "First Name",
+              "Organisation *": "Organization",
+              "Site web": "Website",
+              "Envoyer ma demande": "Submit my request",
+              "Envoi en cours...": "Sending in progress...",
+                "email": "your@email.com",
+                "Nom de votre organisation": "Your organization name",
+                "www.votresite.com": "https://www.yoursite.com",
+                "Votre numéro de téléphone": "Your phone number",
+                "Décrivez votre projet ou vos besoins en détail": "Describe your project or needs in detail",
+
+
+                
+                
+                  "Vidéothèque": "Video Library",
+                  "Découvrez notre collection de vidéos éducatives pour enrichir votre expérience d'apprentissage.": "Discover our collection of educational videos to enhance your learning experience.",
+                  "Rechercher une vidéo...": "Search for a video...",
+                  "Actualiser": "Refresh",
+                  "Chargement des vidéos...": "Loading videos...",
+                  "Réessayer": "Retry",
+                  "Autres vidéos": "Other videos",
+                  "Toutes les vidéos": "All videos",
+                  "Voir la vidéo": "Watch video",
+                  "Plein écran": "Full screen",
+                  "Aucun résultat trouvé pour": "No results found for",
+                  "Effacer la recherche": "Clear search",
+                  "Aucune vidéo disponible.": "No videos available.",
+                  "Explorez notre collection de vidéos": "Explore our collection of videos",
+                  "Découvrez des contenus éducatifs innovants pour enrichir votre expérience d'apprentissage et développer de nouvelles compétences.": "Discover innovative educational content to enhance your learning experience and develop new skills.",
+                  "Découvrir les vidéos": "Discover the videos",
+
+
+                  
+                    "Phototheque":"Photo Library",
+                    "Découvrez notre collection de photos illustrant les activités et événements de notre fondation": "Discover our collection of photos illustrating the foundation's activities and events",
+                    "Rechercher des photos...": "Search photos...",
+                    "Vue grille": "Grid view",
+                    "Vue chronologique": "Timeline view",
+                    "Agrandir l'image": "Enlarge image",
+                    "Réinitialiser la position": "Reset position",
+                    "Voir plus": "Show more",
+                    "Voir moins": "Show less",
+                    "Fermer": "Close",
+
+
+                    
+                      "FONDATION DOCUMENTS": "FOUNDATION DOCUMENTS",
+                      "Centre de documentation officiel": "Official documentation center",
+                      "Documents disponibles": "Available documents",
+                      "Vue Liste": "List View",
+                      "Vue Grille": "Grid View",
+                      "Rechercher un document...": "Search a document...",
+                       "Télécharger": "Download",
+
+
+
+                       
+                        "Erreur lors du chargement des plateformes": "Error loading platforms",
+                        "Notre écosystème de plateformes": "Our platform ecosystem",
+                        "Découvrez les différentes plateformes et initiatives de notre fondation pour maximiser notre impact collectif.": "Discover the various platforms and initiatives of our foundation to maximize our collective impact.",
+                        "Aucune plateforme n'est disponible pour le moment.": "No platforms are available at the moment.",
+                        "Image non disponible": "Image unavailable",
+                        "Pas de description disponible": "No description available",
+                        "Ajouté le ": "Added on ",
+                        "Visiter": "Visit",
+
+
+                        
+                          "Nos Programmes": "Our Programs",
+                          "Découvrez les différents programmes et initiatives de notre fondation pour maximiser notre impact collectif.": "Discover the different programs and initiatives of our foundation to maximize our collective impact.",
+                          "Rechercher un programme...": "Search for a program...",
+                          "Rechercher un programme": "Search for a program",
+                          "Chargement des programmes...": "Loading programs...",
+                          "Erreur": "Error",
+                          "Aucun programme ne correspond à votre recherche.": "No program matches your search.",
+                          "Effacer la recherche": "Clear search",
+                          "Réduire": "Collapse",
+                          "Lire plus": "Read more",
+                          "Intéressé par nos programmes ?": "Interested in our programs?",
+                          "Rejoignez nos initiatives et contribuez à transformer l'éducation numérique avec la Fondation Tamkine.": "Join our initiatives and help transform digital education with the Tamkine Foundation.",
+                          "Nous contacter": "Contact us",
+                          "Erreur lors du chargement des programmes.": "Error loading programs.",
+
+
+
+                          
+  "Actualités": "News",
+  "EN DIRECT DU TERRAIN": "LIVE FROM THE COURT",
+  "Retrouvez les dernières nouvelles du Jorfof Basket Club, les matchs récents et les moments forts !": "Find the latest news from Jorfof Basket Club, recent games, and highlights!",
+  "Chargement des actualités...": "Loading news...",
+  "Erreur": "Error",
+  "À LA UNE": "Breaking News",
+  "Pas d'image disponible": "No image available",
+  "Lire plus": "Read more",
+  "Autres actualités": "More News",
+  "Aucune actualité disponible pour le moment.": "No news available at the moment.",
+
+  
+  "Jorfof Club": "Jorfof Club",
+  "Toujours Prêt à Gagner !": "Always Ready to Win!",
+
+  "Rejoignez notre communauté": "Join our community",
+  "Partagez vos idées, vos motivations et votre passion pour le basketball avec la famille Jorfof.": "Share your ideas, motivations, and passion for basketball with the Jorfof family.",
+
+  "Formulaire de contact": "Contact Form",
+  "Nom complet": "Full Name",
+  "Votre nom complet": "Your full name",
+  "Email": "Email",
+  "votre.email@exemple.com": "your.email@example.com",
+  "Rôle": "Role",
+  "-- Sélectionnez votre rôle --": "-- Select your role --",
+  "Joueur": "Player",
+  "Entraîneur": "Coach",
+  "Supporter": "Supporter",
+  "Bénévole": "Volunteer",
+  "Autres": "Other",
+  "Message": "Message",
+  "Partagez votre motivation ou votre message...": "Share your motivation or message...",
+
+  "Envoyer": "Send",
+  "Envoi en cours...": "Sending...",
+
+  "✅ Votre message a été envoyé avec succès !": "✅ Your message has been sent successfully!",
+  "❌ Une erreur s'est produite.": "❌ An error occurred.",
+  "⚠️ Impossible d'envoyer le formulaire pour le moment.": "⚠️ Unable to send the form at the moment.",
+
+  
+
+
+
+
+
+                            
+  "title": "Welcome to our website",
+  "loading": "Loading...",
+  "error": "Error while loading",
+  "no_content": "No content found",
+  "president_message": "President's Message",
+  "president_name": "President Name",
+  "president_role": "President",
+  "latest_news": "Latest News",
+  "calendar": "Match Calendar",
+  "team": "Our Team",
+  "videos": "Video Library",
+  "partners": "Our Partners",
+
+
+                          
+                            "Actualités": "News",
+                            "Découvrez les dernières nouvelles et mises à jour de la Fondation Tamkine": "Discover the latest news and updates from the Tamkine Foundation",
+                            "Rechercher un programme...": "Search for a program...",
+                            "Effacer la recherche": "Clear search",
+                            "Chargement des actualités...": "Loading news...",
+                            "Erreur": "Error",
+                            "Erreur lors du chargement": "Error while loading",
+                            "À LA UNE": "FEATURED",
+                            "Dernière nouvelle": "Latest news",
+                            "Pas d'image disponible": "No image available",
+                            "Réduire": "Collapse",
+                            "Lire plus": "Read more",
+                            "Nouvelles récentes": "Recent news",
+                            "Aucune actualité ne correspond à votre recherche.": "No news matches your search.",
+                            "Aucune actualité disponible pour le moment.": "No news available at the moment.",
+                            "Lire moins": "Read less",
+                            "Mission & Vision": "MISSION&VISION",
+
+                            "programs": {
+    "cta_title": "Join the digital education revolution",
+    "cta_description": "Together, let's build a future where every learner has access to digital tools that will transform their educational journey. Your involvement can make a difference.",
+    "show_less": "Show less",
+     "read_more": "Read more",
+     "search_placeholder": "Search for a program...",
+     "title": "Our programs",
+     "subtitle": "Discover our educational offerings tailored to your needs."
+
+  },
+  
+    "platforms": {
+      "title": "Our Platforms",
+      "subtitle": "Explore the available platforms to support you.",
+      "search_placeholder": "Search a platform...",
+      "search_aria_label": "Platform search input",
+      "no_platforms": "No platforms found.",
+      "clear_search": "Clear search",
+      "date_unavailable": "Date unavailable",
+      "image_unavailable": "Image unavailable",
+      "untitled": "Untitled",
+      "no_description": "No description available"
+    },
+    "common": {
+      "loading": "Loading...",
+      "error": "An error occurred"
+    },
+    "errors": {
+      "loading_platforms": "Failed to load platforms.",
+      "fetch_error": "Error fetching data:"
+    },
+    
+      "activities": {
+        "title": "Our Activities",
+        "subtitle": "Discover the latest initiatives, workshops, and events we have organized.",
+        "search_placeholder": "Search for an activity...",
+        "search_aria_label": "Activity search field",
+        "no_activities": "No activities found.",
+        "clear_search": "Clear search",
+        "date_unavailable": "Date not available",
+        "image_unavailable": "Image not available"
+      },
+      "common": {
+        "loading": "Loading...",
+        "error": "An error occurred"
+      },
+      "errors": {
+        "loading_activities": "Error loading activities",
+        "fetch_error": "Data fetch error"
+      },
+      
+        "media_partners": {
+          "title": "Media Partners",
+          "subtitle": "Discover our media partners and their activities.",
+          "search_placeholder": "Search for a partner...",
+          "search_aria_label": "Media partners search field",
+          "filters": {
+            "title": "Filters",
+            "clear_all": "Clear All",
+            "category": "Category",
+            "all_categories": "All Categories",
+            "year": "Year",
+            "all_years": "All Years",
+            "month": "Month",
+            "all_months": "All Months",
+            "activity": "Activity",
+            "all_activities": "All Activities"
+          },
+          "errors": {
+            "loading_error": "Error loading media partners.",
+            "fetch_error": "Error fetching media partners."
+          },
+          "retry": "Retry"
+        },
+        "common": {
+          "loading": "Loading...",
+          "error": "Error"
+        },
+
+  "calendar": {
+    "title": "SCHEDULE",
+    "search_placeholder": "Search for a match...",
+    "loading": "Loading matches...",
+    "no_matches": "No matches scheduled yet.",
+    "show_details": "Show details",
+    "hide_details": "Hide details",
+    "no_description": "No description available for this match.",
+    "error": "An error occurred while loading matches.",
+    "join_title": "JOIN US!",
+    "join_text": "Follow our news and come support the Jorfof Club at every match!",
+    "contact_us": "Contact us",
+    "join_us": "Join us"
+  },
+  
+  "videotheque": {
+    "title": "VIDEO LIBRARY",
+    "description": "Discover our collection of educational videos to enhance your learning experience",
+    "search": "Search",
+    "refresh": "Refresh",
+    "loading": "Loading...",
+    "loading_videos": "Loading videos...",
+    "fullscreen": "Full screen",
+    "other_videos": "Other videos",
+    "all_videos": "All videos",
+    "error": "Error",
+    "retry": "Retry",
+    "no_videos_found": "No videos found",
+    "clear_search": "Clear search",
+    "view": "View",
+    "search_title": "Search for a video",
+    "search_placeholder": "Type a video title...",
+    "results_found": "result found",
+    "results_found_plural": "results found",
+    "close": "Close"
+  },
+
+  
+  "partner": {
+  "title": "Our Partners",
+
+  "subtitle": {
+    "part1": "Discover the partners who support",
+    "club": "VIALI",
+    "part2": "in its industrial journey!"
+  },
+
+  "section_title": "Official Partners",
+  "section_subtitle": "They believe in our vision",
+
+  "loading": "Loading partners...",
+  "no_partners_title": "No partners available",
+  "no_partners_text": "Check back soon to discover our partners.",
+
+  "cta_title": "JOIN OUR PARTNERS",
+  "cta_text": {
+    "part1": "Support",
+    "club": "VIALI",
+    "part2": "and take part in our shared passion: producing high-quality sardines and tuna."
+  },
+  "cta_button": "BECOME A PARTNER"
+},
+
+  "common": {
+    "loading": "Loading...",
+    "error": "Error"
+  },
+
+  "nav": {
+    "news": "News",
+    "Viali": "About",
+    "president_word": "President's Message",
+    "missions": "Mission",
+    "team": "Our Team",
+    "calendrier": "Schedule",
+    "medias": "Media",
+    "photos": "Photo Gallery",
+    "videos": "Video Gallery",
+    "partenaires": " Partners",
+    "join_us": "Join Us",
+    "contact": "Contact Us",
+    "community": "Community",
+    "home": "Home",
+    "viali_presentation": "Viali Presentation",
+    "slogan": "From the ocean to your plate",
+    "values":"Our Values",
+    "product":"Products",
+    "sardine":"Sardine",
+    "tuna":"Tuna",
+    "recipes":"Recipes",
+    "profesionnalarea":"Business Area"
+  }, 
+
+  
+  "news": {
+    "title": "News",
+    "subtitle": "Discover our latest news and updates",
+    "loading": "Loading news...",
+    "errorTitle": "Loading error",
+    "retry": "Retry",
+    "noNews": "No news",
+    "noNewsDesc": "No news is available at the moment.",
+    "readMore": "Read more",
+    "close": "Close",
+    "page": "Page",
+    "previousPage": "Previous page",
+    "nextPage": "Next page"
+  },
+  
+  "home": {
+    "title": "Welcome to our website",
+    "loading": "Loading...",
+    "error": "Error while loading",
+    "no_content": "No content found",
+    "president_message": "President's Message",
+    "president_name": "M. Youssouf Fofana",
+    "president_role": "President of Jorfof Basket Club",
+    "latest_news": "Latest News",
+    "calendar": "Match Calendar",
+    "team": "Our Team",
+    "videos": "Video Library",
+    "partners": "Our Partners"
+  },
+
+  
+  "team": {
+    "title": "Our Team",
+    "title2": "The talents that make our company",
+    "subtitle": "Meet the people who make the heart of the club beat.",
+    "loading": "Loading...",
+    "error": "Error",
+    "all": "All",
+    "players": "Players",
+    "coaches": "Coaches",
+    "staffs": "Staffs",
+    "player": "Player",
+    "coach": "Coach",
+    "assistant": "Assistant",
+    "staff": "Technical Staff",
+    "manager": "Manager",
+    "no_members": "No members found"
+  },
+
+  
+  "sardine": {
+    "title": "Sardine Products",
+    "subtitle": "Discover our range of premium quality sardines",
+
+    "errorTitle": "Loading error",
+    "retry": "Try again",
+
+    "noProducts": "No products available",
+    "noProductsDesc": "Our products are coming soon. Please check back later.",
+
+    "untitled": "Untitled",
+
+    "ctaTitle": "INTERESTED IN OUR PRODUCTS?",
+    "ctaDesc": "Contact VIALI for more information about our full range of sardine-based products",
+    "ctaButton": "CONTACT US",
+
+    "available": "Product available",
+
+    "infoTitle": "Information",
+    "infoText": "For any order or additional information, feel free to contact us.",
+
+    "footerNote": "Premium quality product",
+
+    "order": "Order",
+    "close": "Close"
+  },
+
+  "thon": {
+    "title": "Thon Products",
+    "subtitle": "Discover our range of premium quality thon",
+
+    "errorTitle": "Loading error",
+    "retry": "Try again",
+
+    "noProducts": "No products available",
+    "noProductsDesc": "Our products are coming soon. Please check back later.",
+
+    "untitled": "Untitled",
+
+    "ctaTitle": "INTERESTED IN OUR PRODUCTS?",
+    "ctaDesc": "Contact VIALI for more information about our full range of thon-based products",
+    "ctaButton": "CONTACT US",
+
+    "available": "Product available",
+
+    "infoTitle": "Information",
+    "infoText": "For any order or additional information, feel free to contact us.",
+
+    "footerNote": "Premium quality product",
+
+    "order": "Order",
+    "close": "Close"
+  },
+  
+  "missions": {
+    "loading": "Loading...",
+    "title2": "Discover the missions that shape our vision",
+    "error": "Error",
+    "empty": "No mission found",
+    "empty_desc": "Check back soon to discover our upcoming missions.",
+    "title": "Our Missions and Values",
+    "published": "Published on",
+    "our_mission": "Our Mission",
+    "vision": "Leadership",
+    "objective": "Excellence",
+    "impact": "Success",
+    "commitments": "Our Commitments",
+    "commitment_1": "Train the future champions",
+    "commitment_2": "Promote team spirit",
+    "commitment_3": "Develop local talents",
+    "commitment_4": "Inspire the new generation",
+    "cta_title": "Join Our Mission",
+    "cta_text": "Together, let's build the future of basketball.",
+    "contact_us": "Contact Us",
+    "join_us": "Join Us"
+  },
+
+  
+  "recipes": {
+    "title": "Sardine Recipes",
+    "subtitle": "Discover our delicious sardine-based recipes",
+    "errorTitle": "Loading Error",
+    "retry": "Retry",
+    "empty": "No recipes found",
+    "emptyDesc": "There are currently no active recipes. Please check back later!",
+    "untitled": "Untitled Recipe",
+    "ctaTitle": "Explore all our recipes",
+    "ctaDesc": "Discover a unique selection of tasty sardine-based recipes, tested and approved by our chefs.",
+    "ctaButton": "View all recipes",
+    "badge": "Special Recipe",
+    "recipeTitle": "Recipe Description",
+    "infoTitle": "Note",
+    "infoText": "These recipes are designed to be easy to follow and delicious.",
+    "footerNote": "Recipes updated regularly",
+    "contact": "Contact us",
+    "close": "Close"
+  },
+
+  
+  "thonRecipes": {
+    "title": "Tuna Recipes",
+    "subtitle": "Discover our delicious tuna-based recipes, tasty and easy to prepare",
+
+    "errorTitle": "Loading error",
+    "retry": "Retry",
+
+    "empty": "No recipes available",
+    "emptyDesc": "There are currently no active recipes. Please check back later.",
+
+    "untitled": "Untitled recipe",
+
+    "ctaTitle": "Explore all our recipes",
+    "ctaDesc": "Discover a unique selection of tasty tuna-based recipes, carefully prepared to inspire your daily cooking.",
+    "ctaButton": "Contact us",
+
+    "badge": "Special recipe",
+
+    "recipeTitle": "Recipe description",
+
+    "infoTitle": "Information",
+    "infoText": "These recipes are provided for informational purposes and can be adapted to your preferences.",
+
+    "footerNote": "Recipes updated regularly",
+
+    "contact": "Contact us",
+    "close": "Close"
+  },
+
+
+  "values": {
+    "title": "OUR VALUES",
+    "loading": "Loading values...",
+    "error": "Loading error",
+    "empty": "No values available",
+    "empty_desc": "Come back soon to discover our values",
+    "published": "Published on",
+    "our_core": "Our Core",
+    "respect": "Respect",
+    "integrity": "Integrity",
+    "excellence": "Excellence",
+    "key_principles": "Our Core Principles",
+    "principle_1": "Mutual respect and solidarity among all club members",
+    "principle_2": "Team spirit and collaboration to achieve our common goals",
+    "principle_3": "Discipline and commitment in every training and competition",
+    "principle_4": "Fair play and integrity on and off the court",
+    "cta_title": "Share Our Values!",
+    "cta_text": "Join a community that puts people and excellence at the heart of every action",
+    "contact_us": "Contact Us",
+    "join_us": "Join the Club"
+  }, 
+  
+ 
+  "president": {
+    "loading": "Loading the President’s message...",
+    "error": "An error occurred",
+    "empty": "No message available",
+    "empty_desc": "The President’s message is not yet available. Please check back soon!",
+    "title": "President’s Message",
+    "published": "Published on",
+    "message_from": "Message from the President",
+    "president_name": "M. Youssouf Fofana",
+    "president_role": "President of Jorfof Basket Club",
+    "cta_title": "Join the Jorfof Basketball Spirit",
+    "cta_text": "Let’s share together the values of sportsmanship, excellence, and teamwork. Basketball is more than a game — it’s a passion that brings us together.",
+    "cta_button": "Discover the club"
+  
+},
+  
+  "phototheque": {
+    "titre": "PHOTO GALLERY",
+    "sous_titre": "Discover our collection of photos showcasing our activities and events.",
+    "recherche": "Search...",
+    "photos": "photos",
+    "aucun_album": "No album found",
+    "chargement": "Loading...",
+    "erreur_chargement": "Error while loading albums or photos."
+  }
+
+
+
+
+
+
+
+
+      
+      
+    
+    
+  
+  
+                          
+                          
+                        
+                        
+                      
+                      
+                      
+                    
+                    
+                
+                  
+                  
+
+
+                  
+                
+
+
+            
+          
+        
+        
+      
+      
+    
+    
+    
+    
+    
+  
+  
+    
+
+  
+}

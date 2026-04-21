@@ -1,0 +1,52 @@
+
+{% load static %}
+{% load i18n %}
+  
+    <!-- Avatar flottant pour déclencher le chatbot -->
+    <img id="chat-avatar" src="{% static '/src/assets/avatar2.png' %}"
+     alt="Chatbot Avatar">
+    <!-- Conteneur du chatbot -->
+    <div>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div id="chatbox">
+                    <div id="chatbox-header">
+                        <h4 class="mb-0 text-white">{% trans 'Tambot' %}</h4>
+                        <button id="close-button" class="close-button">&times;</button>
+                    </div>
+                    <div class="warning-alert" id="chatbot-warning-alert" style="display: none">
+                        <div class="warning-alert-content text-white px-3 py-2 rounded shadow" id="chatbot-warning-alertC">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0">{% trans 'Browser Not Supported' %}</h6>
+                                <button type="button" id="close-chatbot-alert" class="close text-white" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <p class="mb-0">{% trans 'Speech recognition is not supported in this browser. Please use a different browser.' %}</p>
+                        </div>
+                    </div>
+
+                    <div id="chatbox-body">
+                        <div id="messages" class="chat-messages"></div>
+                        <div id="welcome-message" class="welcome-message">
+                            <img src="{% static '/src/assets/avatar2.png' %}" alt="Welcome Avatar" class="welcome-avatar">
+                            <div class="welcome-text">
+                                <p>{% trans 'Welcome to our chat! How can I assist you today?' %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="chatbox-footer">
+                        <div class="input-group">
+                            <input type="text" id="user-input" class="form-control" placeholder="Type your message...">
+                            <div class="input-group-append">
+                                <button id="voice-button">
+                                    <img src="https://img.icons8.com/material-outlined/24/000000/microphone.png" alt="Voice Icon" id="voice-icon">
+                                </button>
+                            </div>
+                            <button id="send-button">{% trans 'Send' %}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
