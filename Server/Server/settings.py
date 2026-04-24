@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Base',
     'corsheaders',
+    'django_filters', 
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [

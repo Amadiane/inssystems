@@ -189,7 +189,7 @@ const NavAdmin = ({ onToggle, isOpen, onClose }) => {
       label: "Secrétariat DG",
       color: C.rouge,
       items: [
-        { path: "/secretariat/courriers",  label: "Courriers",         icon: FileText, accent: C.rouge },
+        { path: "/gestionCourriers",  label: "Courriers",         icon: FileText, accent: C.rouge },
         { path: "/secretariat/agenda",     label: "Agenda du DG",      icon: Clock,    accent: C.rouge },
         { path: "/secretariat/documents",  label: "Documents officiels", icon: FileText, accent: C.rouge },
       ],
