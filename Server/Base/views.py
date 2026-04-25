@@ -43,20 +43,16 @@ class LoginView(APIView):
 
 
 
-#view courriers arrivés
-
-
 # courriers/views.py
 
-from rest_framework                 import generics, status, filters
-from rest_framework.response        import Response
-from rest_framework.views           import APIView
-from rest_framework.permissions     import IsAuthenticated
-from rest_framework.parsers         import MultiPartParser, FormParser, JSONParser
-from django_filters.rest_framework  import DjangoFilterBackend
-from django.shortcuts               import get_object_or_404
-from django.http                    import HttpResponse
-from django.template.loader         import render_to_string
+from rest_framework             import generics, status, filters
+from rest_framework.response    import Response
+from rest_framework.views       import APIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.parsers     import MultiPartParser, FormParser, JSONParser
+from django_filters.rest_framework import DjangoFilterBackend
+from django.shortcuts           import get_object_or_404
+import cloudinary
 import cloudinary.uploader
 
 from .models      import CourrierArrive, LigneCirculation
@@ -68,15 +64,25 @@ from .serializers import (
 )
 
 
-# ════════════════════════════════════════════════════════════
-#  1. LISTE + CRÉATION des courriers arrivés
-# ════════════════════════════════════════════════════════════
-class CourrierArriveListCreateView(generics.ListCreateAPIView):
-    """
-    GET  /api/courriers-arrives/          → Liste paginée
-    POST /api/courriers-arrives/          → Création (avec upload scan optionnel)
-    """
+def upload_scan(fichier, numero_ordre):
+    """Upload vers Cloudinary, retourne l'URL HTTPS complète."""
+    public_id = f"courrier_{numero_ordre.replace('/', '_')}"
+    print(f"[CLOUDINARY] Upload début — public_id={public_id}, fichier={fichier.name}, size={fichier.size}")
+    result = cloudinary.uploader.upload(
+        fichier,
+        folder        = 'ins_guinee/courriers_arrives',
+        resource_type = 'auto',
+        public_id     = public_id,
+        overwrite     = True,
+    )
+    print(f"[CLOUDINARY] Upload OK — secure_url={result['secure_url']}")
+    return result['secure_url']
 
+
+# ════════════════════════════════════════════════════════
+#  1. LISTE + CRÉATION
+# ════════════════════════════════════════════════════════
+class CourrierArriveListCreateView(generics.ListCreateAPIView):
     queryset           = CourrierArrive.objects.all().order_by('-date_arrivee', '-id')
     permission_classes = [IsAuthenticated]
     parser_classes     = [MultiPartParser, FormParser, JSONParser]
@@ -86,182 +92,145 @@ class CourrierArriveListCreateView(generics.ListCreateAPIView):
     ordering_fields    = ['date_arrivee', 'created_at', 'numero_ordre']
 
     def get_serializer_class(self):
-        if self.request.method == 'POST':
-            return CourrierArriveDetailSerializer
         return CourrierArriveListSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
-
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(
-            data=request.data,
-            context={'request': request}
+        print(f"\n{'='*60}")
+        print(f"[CREATE] request.FILES  = {dict(request.FILES)}")
+        print(f"[CREATE] request.data   = {dict(request.data)}")
+        print(f"[CREATE] Content-Type   = {request.content_type}")
+        print(f"{'='*60}\n")
+
+        fichier_scan = request.FILES.get('scan', None)
+        print(f"[CREATE] fichier_scan = {fichier_scan}")
+
+        origine   = request.data.get('origine',   '').strip()
+        reference = request.data.get('reference', '').strip()
+        objet     = request.data.get('objet',     '').strip()
+
+        errors = {}
+        if not origine:   errors['origine']   = ['Ce champ est obligatoire.']
+        if not reference: errors['reference']  = ['Ce champ est obligatoire.']
+        if not objet:     errors['objet']      = ['Ce champ est obligatoire.']
+        if errors:
+            return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+
+        date_envoi = request.data.get('date_envoi') or None
+        if date_envoi == '': date_envoi = None
+
+        instance = CourrierArrive.objects.create(
+            date_arrivee = request.data.get('date_arrivee'),
+            origine      = origine,
+            reference    = reference,
+            date_envoi   = date_envoi,
+            objet        = objet,
+            created_by   = request.user,
         )
-        serializer.is_valid(raise_exception=True)
-        instance = serializer.save()
+        print(f"[CREATE] Instance créée — id={instance.id}, numero={instance.numero_ordre}")
 
-        # Retourner la fiche complète avec lignes de circulation
-        detail_serializer = CourrierArriveDetailSerializer(
-            instance,
-            context={'request': request}
-        )
-        return Response(detail_serializer.data, status=status.HTTP_201_CREATED)
+        if fichier_scan:
+            try:
+                secure_url    = upload_scan(fichier_scan, instance.numero_ordre)
+                instance.scan = secure_url
+                instance.save(update_fields=['scan'])
+                print(f"[CREATE] Scan sauvegardé — instance.scan='{instance.scan}'")
+            except Exception as e:
+                print(f"[CREATE] ❌ Upload scan ÉCHOUÉ : {type(e).__name__}: {e}")
+        else:
+            print(f"[CREATE] Aucun fichier scan dans la requête.")
+
+        # Vérification finale
+        instance.refresh_from_db()
+        print(f"[CREATE] Après refresh — instance.scan='{instance.scan}', scan_url='{instance.scan_url}'")
+
+        serializer = CourrierArriveDetailSerializer(instance, context={'request': request})
+        response_data = serializer.data
+        print(f"[CREATE] Réponse scan_url='{response_data.get('scan_url')}', scan='{response_data.get('scan')}'")
+
+        return Response(response_data, status=status.HTTP_201_CREATED)
 
 
-# ════════════════════════════════════════════════════════════
-#  2. DÉTAIL, MODIFICATION, SUPPRESSION d'un courrier
-# ════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════
+#  2. DÉTAIL, MODIFICATION, SUPPRESSION
+# ════════════════════════════════════════════════════════
 class CourrierArriveDetailView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    GET    /api/courriers-arrives/<id>/   → Consulter
-    PUT    /api/courriers-arrives/<id>/   → Modifier (remplace tout)
-    PATCH  /api/courriers-arrives/<id>/   → Modifier partiellement
-    DELETE /api/courriers-arrives/<id>/   → Supprimer
-    """
-
     queryset           = CourrierArrive.objects.all()
-    serializer_class   = CourrierArriveDetailSerializer
     permission_classes = [IsAuthenticated]
     parser_classes     = [MultiPartParser, FormParser, JSONParser]
+    serializer_class   = CourrierArriveDetailSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        print(f"[RETRIEVE] id={instance.id}, scan='{instance.scan}', scan_url='{instance.scan_url}'")
+        serializer = CourrierArriveDetailSerializer(instance, context={'request': request})
+        data = serializer.data
+        print(f"[RETRIEVE] Serializer scan_url='{data.get('scan_url')}', scan='{data.get('scan')}'")
+        return Response(data)
 
     def update(self, request, *args, **kwargs):
-        partial  = kwargs.pop('partial', False)
-        instance = self.get_object()
+        instance     = self.get_object()
+        fichier_scan = request.FILES.get('scan', None)
 
-        # Si un nouveau scan est envoyé, supprimer l'ancien sur Cloudinary
-        if 'scan' in request.FILES and instance.scan:
+        for champ in ['date_arrivee', 'origine', 'reference', 'objet']:
+            val = request.data.get(champ)
+            if val is not None and val != '':
+                setattr(instance, champ, val)
+
+        date_envoi = request.data.get('date_envoi')
+        if date_envoi is not None:
+            instance.date_envoi = date_envoi if date_envoi != '' else None
+
+        if fichier_scan:
             try:
-                cloudinary.uploader.destroy(instance.scan.public_id, resource_type='auto')
-            except Exception:
-                pass  # Continuer même si la suppression échoue
+                secure_url    = upload_scan(fichier_scan, instance.numero_ordre)
+                instance.scan = secure_url
+            except Exception as e:
+                print(f"[UPDATE] ❌ Upload scan ÉCHOUÉ : {e}")
 
-        serializer = self.get_serializer(
-            instance,
-            data=request.data,
-            partial=partial,
-            context={'request': request}
-        )
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
+        instance.save()
+        instance.refresh_from_db()
+        print(f"[UPDATE] Après save — scan='{instance.scan}', scan_url='{instance.scan_url}'")
 
-        # Retourner la fiche complète
-        detail_serializer = CourrierArriveDetailSerializer(
-            instance,
-            context={'request': request}
-        )
-        return Response(detail_serializer.data)
+        serializer = CourrierArriveDetailSerializer(instance, context={'request': request})
+        return Response(serializer.data)
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
-        # Supprimer le scan Cloudinary si existant
-        if instance.scan:
-            try:
-                cloudinary.uploader.destroy(instance.scan.public_id, resource_type='auto')
-            except Exception:
-                pass
-        self.perform_destroy(instance)
-        return Response(
-            {"message": f"Courrier {instance.numero_ordre} supprimé avec succès."},
-            status=status.HTTP_204_NO_CONTENT
-        )
+        numero   = instance.numero_ordre
+        instance.delete()
+        return Response({"message": f"Courrier {numero} supprimé."}, status=status.HTTP_204_NO_CONTENT)
 
 
-# ════════════════════════════════════════════════════════════
-#  3. UPLOAD / REMPLACEMENT du scan uniquement
-# ════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════
+#  3. UPLOAD scan uniquement
+# ════════════════════════════════════════════════════════
 class CourrierScanUploadView(APIView):
-    """
-    POST /api/courriers-arrives/<id>/scan/
-    Body : multipart/form-data avec champ 'scan' (image ou PDF)
-    Remplace le scan existant et retourne la nouvelle URL Cloudinary.
-    """
-
     permission_classes = [IsAuthenticated]
     parser_classes     = [MultiPartParser, FormParser]
 
     def post(self, request, pk):
         courrier = get_object_or_404(CourrierArrive, pk=pk)
-
         if 'scan' not in request.FILES:
-            return Response(
-                {"error": "Aucun fichier envoyé. Utilisez le champ 'scan'."},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-        fichier = request.FILES['scan']
-
-        # Supprimer l'ancien scan si existant
-        if courrier.scan:
-            try:
-                cloudinary.uploader.destroy(courrier.scan.public_id, resource_type='auto')
-            except Exception:
-                pass
-
-        # Upload vers Cloudinary
+            return Response({"error": "Champ 'scan' manquant."}, status=status.HTTP_400_BAD_REQUEST)
         try:
-            upload_result = cloudinary.uploader.upload(
-                fichier,
-                folder='ins_guinee/courriers_arrives',
-                resource_type='auto',
-                public_id=f"courrier_{courrier.numero_ordre.replace('/', '_')}",
-                overwrite=True,
-                use_filename=True,
-            )
+            secure_url    = upload_scan(request.FILES['scan'], courrier.numero_ordre)
+            courrier.scan = secure_url
+            courrier.save(update_fields=['scan'])
         except Exception as e:
-            return Response(
-                {"error": f"Échec de l'upload Cloudinary : {str(e)}"},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
-
-        # Sauvegarder la référence Cloudinary
-        courrier.scan = upload_result['public_id']
-        courrier.save(update_fields=['scan'])
-
-        return Response({
-            "message"    : "Scan uploadé avec succès.",
-            "scan_url"   : upload_result['secure_url'],
-            "public_id"  : upload_result['public_id'],
-            "format"     : upload_result.get('format'),
-            "resource_type": upload_result.get('resource_type'),
-        }, status=status.HTTP_200_OK)
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({"message": "Scan uploadé.", "scan_url": secure_url}, status=status.HTTP_200_OK)
 
     def delete(self, request, pk):
-        """
-        DELETE /api/courriers-arrives/<id>/scan/
-        Supprime uniquement le scan, sans toucher à la fiche.
-        """
         courrier = get_object_or_404(CourrierArrive, pk=pk)
-
-        if not courrier.scan:
-            return Response(
-                {"error": "Aucun scan à supprimer."},
-                status=status.HTTP_404_NOT_FOUND
-            )
-
-        try:
-            cloudinary.uploader.destroy(courrier.scan.public_id, resource_type='auto')
-        except Exception as e:
-            return Response(
-                {"error": f"Erreur Cloudinary : {str(e)}"},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
-
         courrier.scan = None
         courrier.save(update_fields=['scan'])
+        return Response({"message": "Scan supprimé."}, status=status.HTTP_200_OK)
 
-        return Response({"message": "Scan supprimé avec succès."}, status=status.HTTP_200_OK)
 
-
-# ════════════════════════════════════════════════════════════
-#  4. MISE À JOUR d'une LIGNE de circulation (signature)
-# ════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════
+#  4. SIGNATURE ligne de circulation
+# ════════════════════════════════════════════════════════
 class LigneCirculationUpdateView(generics.UpdateAPIView):
-    """
-    PATCH /api/courriers-arrives/<courrier_id>/circulation/<id>/
-    Permet à un responsable de signer (date, annotation, observation).
-    """
-
     queryset           = LigneCirculation.objects.all()
     serializer_class   = LigneCirculationUpdateSerializer
     permission_classes = [IsAuthenticated]
@@ -281,16 +250,27 @@ class LigneCirculationUpdateView(generics.UpdateAPIView):
         return Response(serializer.data)
 
 
-# ════════════════════════════════════════════════════════════
-#  5. DONNÉES pour IMPRESSION / TÉLÉCHARGEMENT
-# ════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════
+#  5. IMPRESSION
+# ════════════════════════════════════════════════════════
 class CourrierArriveImpressionView(generics.RetrieveAPIView):
-    """
-    GET /api/courriers-arrives/<id>/impression/
-    Retourne toutes les données nécessaires pour générer le PDF
-    ou afficher la fiche imprimable côté frontend (React/PDF).
-    """
-
     queryset           = CourrierArrive.objects.prefetch_related('lignes_circulation')
     serializer_class   = CourrierArriveImpressionSerializer
     permission_classes = [IsAuthenticated]
+
+
+# ════════════════════════════════════════════════════════
+#  6. DEBUG scan
+# ════════════════════════════════════════════════════════
+class CourrierScanDebugView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        c = get_object_or_404(CourrierArrive, pk=pk)
+        return Response({
+            "id":            c.id,
+            "numero_ordre":  c.numero_ordre,
+            "scan_raw":      c.scan,
+            "scan_type":     type(c.scan).__name__,
+            "scan_url_prop": c.scan_url,
+        })

@@ -55,7 +55,7 @@ const CONFIG = {
 
   // ── Cloudinary ───────────────────────────────────────────
   CLOUDINARY_NAME:          "dkg28bb4f",
-  CLOUDINARY_UPLOAD_PRESET: "default",
+  CLOUDINARY_UPLOAD_PRESET: "ml_default",
   CLOUDINARY_UPLOAD_URL:    "https://api.cloudinary.com/v1_1/dkg28bb4f/auto/upload",
 };
 
