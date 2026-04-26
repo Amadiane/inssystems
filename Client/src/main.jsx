@@ -83,6 +83,8 @@ import Activity from './components/Admin/Activity.jsx';
 
 import GestionCourriers from './components/Admin/GestionCourriers.jsx';
 import CourriersArrives from './components/Admin/CourriersArrives.jsx';
+import CourriersSortants from './components/Admin/CourriersSortants.jsx';
+import Archives from './components/Admin/Archives.jsx';
 
 
 
@@ -161,7 +163,9 @@ const router = createBrowserRouter(
 
 
         <Route path="courriersArrives"          element={<CourriersArrives />} />
-         <Route path="gestionCourriers"          element={<GestionCourriers />} />
+        <Route path="gestionCourriers"          element={<GestionCourriers />} />
+        <Route path="courriersSortants"          element={<CourriersSortants />} />
+        <Route path="archives"          element={<Archives />} />
 
 
 

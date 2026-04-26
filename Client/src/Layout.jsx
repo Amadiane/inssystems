@@ -56,7 +56,7 @@ const App = () => {
     "/comptabilite/budget", "/comptabilite/depenses", "/comptabilite/rapports",
     "/logistique/materiels", "/logistique/missions", "/logistique/stocks",
     "/rh/agents", "/rh/conges", "/rh/formations",
-    "/admin/utilisateurs", "/admin/historique", "/gestionCourriers", "/courriersArrives",
+    "/admin/utilisateurs", "/admin/historique", "/gestionCourriers", "/courriersArrives","/courriersSortants","/archives",
   ];
 
   const isAdminPage = adminPaths.includes(location.pathname);
