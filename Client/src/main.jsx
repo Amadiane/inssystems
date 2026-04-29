@@ -50,10 +50,10 @@ import ProduitDetail from './components/HeaderSection/ProduitDetail.jsx';
 // Admin — routes protégées
 import PrivateRoute from './components/Routes/PrivateRoute.jsx';
 import DashboardAdmin from './components/Admin/DashboardAdmin.jsx';
-import VendeurDashboard from './components/Admin/VendeurDashboard.jsx'; // ✅ nouveau
+
 import Categories from './components/Admin/Categories.jsx';
 import TeamMessage from './components/Admin/TeamPost.jsx';
-import MissionPost from './components/Admin/MissionPost.jsx';
+
 import ListeRejoindre from './components/Admin/ListeRejoindre.jsx';
 import ListeContacts from './components/Admin/ListeContacts.jsx';
 import ListePostulantsCommunity from './components/Admin/ListeCommunity.jsx';
@@ -85,6 +85,10 @@ import GestionCourriers from './components/Admin/GestionCourriers.jsx';
 import CourriersArrives from './components/Admin/CourriersArrives.jsx';
 import CourriersSortants from './components/Admin/CourriersSortants.jsx';
 import Archives from './components/Admin/Archives.jsx';
+import GestionPersonnel from './components/Admin/GestionPersonnel.jsx';
+import Personnel from './components/Admin/Personnel.jsx';
+import Conges from './components/Admin/Conges.jsx';
+import Assurances from './components/Admin/Assurances.jsx';
 
 
 
@@ -134,10 +138,10 @@ const router = createBrowserRouter(
       <Route element={<PrivateRoute />}>
         {/* ✅ Dashboard selon rôle */}
         <Route path="dashboardAdmin"    element={<DashboardAdmin />} />
-        <Route path="vendeurDashboard"  element={<VendeurDashboard />} />
+       
 
         <Route path="teamMessage"       element={<TeamMessage />} />
-        <Route path="missionPost"       element={<MissionPost />} />
+      
         <Route path="listeRejoindre"    element={<ListeRejoindre />} />
         <Route path="listeContacts"     element={<ListeContacts />} />
         <Route path="listePostulantsCommunity" element={<ListePostulantsCommunity />} />
@@ -166,6 +170,10 @@ const router = createBrowserRouter(
         <Route path="gestionCourriers"          element={<GestionCourriers />} />
         <Route path="courriersSortants"          element={<CourriersSortants />} />
         <Route path="archives"          element={<Archives />} />
+        <Route path="personnel"      element={<Personnel/>}/>
+        <Route path="conges"      element={<Conges/>}/>
+        <Route path="assurances"  element={<Assurances/>}/>
+        <Route path="rh"             element={<GestionPersonnel/>}/>
 
 
 

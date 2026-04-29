@@ -51,11 +51,11 @@ const App = () => {
     "/servicePost", "/categories", "/produits",
     "/activity",
     // ── Nouveaux chemins INS ──
-    "/dashboard", "/monDashboard", "/statistiques",
+    "/dashboard", "/dashboardAdmin", "/statistiques",
     "/secretariat/courriers", "/secretariat/agenda", "/secretariat/documents",
     "/comptabilite/budget", "/comptabilite/depenses", "/comptabilite/rapports",
     "/logistique/materiels", "/logistique/missions", "/logistique/stocks",
-    "/rh/agents", "/rh/conges", "/rh/formations",
+    "/personnel", "/conges", "/assurances","/rh",
     "/admin/utilisateurs", "/admin/historique", "/gestionCourriers", "/courriersArrives","/courriersSortants","/archives",
   ];
 

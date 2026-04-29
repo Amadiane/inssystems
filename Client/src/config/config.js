@@ -89,6 +89,37 @@ const CONFIG = {
   API_ARCHIVE_FROM_ARRIVE:     (id) => `${BASE_URL}/api/archives/from-arrive/${id}/`,
   API_ARCHIVE_FROM_SORTANT:    (id) => `${BASE_URL}/api/archives/from-sortant/${id}/`,
 
+
+
+  // ── RH — Référentiels ─────────────────────────────────
+  API_RH_DIRECTIONS:           `${BASE_URL}/api/directions/`,
+  API_RH_DIRECTION_DETAIL:     (id) => `${BASE_URL}/api/directions/${id}/`,
+  API_RH_FONCTIONS:            `${BASE_URL}/api/fonctions/`,
+  API_RH_FONCTION_DETAIL:      (id) => `${BASE_URL}/api/fonctions/${id}/`,
+ 
+  // ── RH — Personnel ────────────────────────────────────
+  API_RH_PERSONNEL:            `${BASE_URL}/api/personnel/`,
+  API_RH_PERSONNEL_DETAIL:     (id) => `${BASE_URL}/api/personnel/${id}/`,
+  API_RH_PERSONNEL_PDF:        (id) => `${BASE_URL}/api/personnel/${id}/pdf/`,
+ 
+  // ── RH — Congés ───────────────────────────────────────
+  API_RH_CONGES:               `${BASE_URL}/api/conges/`,
+  API_RH_CONGE_DETAIL:         (id) => `${BASE_URL}/api/conges/${id}/`,
+  API_RH_CONGE_VALIDER:        (id) => `${BASE_URL}/api/conges/${id}/valider/`,
+  API_RH_CONGE_AUTORISATION:   (id) => `${BASE_URL}/api/conges/${id}/autorisation/pdf/`,
+ 
+  // ── RH — Soldes congés ────────────────────────────────
+  API_RH_SOLDES:               `${BASE_URL}/api/soldes/`,
+  API_RH_SOLDE_AGENT:          (id) => `${BASE_URL}/api/soldes/${id}/`,
+ 
+  // ── RH — Assurance maladie ────────────────────────────
+  API_RH_ASSURANCES:           `${BASE_URL}/api/assurances/`,
+  API_RH_ASSURANCE_AGENT:      (id) => `${BASE_URL}/api/assurances/${id}/`,
+ 
+  // ── RH — Stats / Dashboard ────────────────────────────
+  API_RH_STATS:                `${BASE_URL}/api/stats/rh/`,
+ 
+
   // ── Media / Cloudinary ────────────────────────────────
   MEDIA_URL:                `${BASE_URL}/media/`,
   CLOUDINARY_NAME:          "dkg28bb4f",

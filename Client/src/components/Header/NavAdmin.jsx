@@ -216,9 +216,10 @@ const NavAdmin = ({ onToggle, isOpen, onClose }) => {
       label: "Ressources Humaines",
       color: C.jauneDeep,
       items: [
-        { path: "/rh/agents",              label: "Agents",            icon: Users,    accent: C.jauneDeep },
-        { path: "/rh/conges",              label: "Congés",            icon: Clock,    accent: C.jauneDeep },
-        { path: "/rh/formations",          label: "Formations",        icon: Users,    accent: C.jauneDeep },
+        { path: "/personnel",              label: "Agents",            icon: Users,    accent: C.jauneDeep },
+        { path: "/conges",              label: "Congés",            icon: Clock,    accent: C.jauneDeep },
+        { path: "/assurances",          label: "Assurances",        icon: Users,    accent: C.jauneDeep },
+         { path: "/rh",          label: "Gestion Personnel",        icon: Users,    accent: C.jauneDeep },
       ],
     },
     ...(isAdmin ? [{

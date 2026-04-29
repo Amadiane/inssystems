@@ -1133,3 +1133,748 @@ class ArchivePDFView(APIView):
         response = HttpResponse(bytes(pdf.output()), content_type="application/pdf")
         response["Content-Disposition"] = f'attachment; filename="archive_{archive.numero_archive.replace("/","_")}.pdf"'
         return response
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# rh/views.py
+import io
+import cloudinary
+import cloudinary.uploader
+from django.utils        import timezone
+from django.http         import HttpResponse
+from django.db.models    import Sum, Q, Count
+from django.shortcuts    import get_object_or_404
+from rest_framework      import status
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.pagination  import PageNumberPagination
+from fpdf import FPDF
+
+from .models import (
+    Direction, Fonction, Personnel,
+    DemandeConge, SoldeConge, AutorisationAbsence, AssuranceMaladie,
+)
+from .serializers import (
+    DirectionSerializer, FonctionSerializer,
+    PersonnelListSerializer, PersonnelDetailSerializer,
+    DemandeCongeSerializer, ValidationCongeSerializer,
+    SoldeCongeSerializer, AutorisationAbsenceSerializer,
+    AssuranceMaladieSerializer, RHStatsSerializer,
+)
+
+# ── Couleurs INS ──────────────────────────────────────────────
+ROUGE  = (206, 17,  38)
+JAUNE  = (252, 209, 22)
+VERT   = (0,   154, 68)
+DARK   = (15,  33,  55)
+GRIS   = (245, 247, 250)
+BORDER = (221, 228, 237)
+TEXT   = (74,  103, 128)
+
+
+# ══════════════════════════════════════════════════════════════
+#  PAGINATION
+# ══════════════════════════════════════════════════════════════
+
+class RHPagination(PageNumberPagination):
+    page_size            = 20
+    page_size_query_param = "page_size"
+    max_page_size        = 100
+
+
+# ══════════════════════════════════════════════════════════════
+#  HELPER — Upload Cloudinary
+# ══════════════════════════════════════════════════════════════
+
+def upload_fichier(file, folder="rh"):
+    """Upload un fichier vers Cloudinary et retourne le public_id."""
+    result = cloudinary.uploader.upload(
+        file,
+        folder=folder,
+        resource_type="auto",
+    )
+    return result.get("secure_url") or result.get("public_id")
+
+
+# ══════════════════════════════════════════════════════════════
+#  RÉFÉRENTIELS
+# ══════════════════════════════════════════════════════════════
+
+class DirectionListCreateView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        qs = Direction.objects.all()
+        return _ok(DirectionSerializer(qs, many=True).data)
+
+    def post(self, request):
+        s = DirectionSerializer(data=request.data)
+        if s.is_valid():
+            s.save()
+            return _created(s.data)
+        return _bad(s.errors)
+
+
+class DirectionDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        obj = get_object_or_404(Direction, pk=pk)
+        return _ok(DirectionSerializer(obj).data)
+
+    def patch(self, request, pk):
+        obj = get_object_or_404(Direction, pk=pk)
+        s = DirectionSerializer(obj, data=request.data, partial=True)
+        if s.is_valid():
+            s.save()
+            return _ok(s.data)
+        return _bad(s.errors)
+
+    def delete(self, request, pk):
+        get_object_or_404(Direction, pk=pk).delete()
+        return _no_content()
+
+
+class FonctionListCreateView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        qs = Fonction.objects.select_related("direction").all()
+        return _ok(FonctionSerializer(qs, many=True).data)
+
+    def post(self, request):
+        s = FonctionSerializer(data=request.data)
+        if s.is_valid():
+            s.save()
+            return _created(s.data)
+        return _bad(s.errors)
+
+
+class FonctionDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        obj = get_object_or_404(Fonction, pk=pk)
+        return _ok(FonctionSerializer(obj).data)
+
+    def patch(self, request, pk):
+        obj = get_object_or_404(Fonction, pk=pk)
+        s = FonctionSerializer(obj, data=request.data, partial=True)
+        if s.is_valid():
+            s.save()
+            return _ok(s.data)
+        return _bad(s.errors)
+
+    def delete(self, request, pk):
+        get_object_or_404(Fonction, pk=pk).delete()
+        return _no_content()
+
+
+# ══════════════════════════════════════════════════════════════
+#  PERSONNEL — LIST / CREATE
+# ══════════════════════════════════════════════════════════════
+
+class PersonnelListCreateView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        qs = Personnel.objects.select_related("fonction", "direction").all()
+
+        # Filtres
+        search = request.query_params.get("search", "").strip()
+        if search:
+            qs = qs.filter(
+                Q(nom__icontains=search)     | Q(prenom__icontains=search) |
+                Q(matricule_interne__icontains=search) |
+                Q(matricule_fp__icontains=search)      |
+                Q(email__icontains=search)
+            )
+        type_emp = request.query_params.get("type_employe")
+        if type_emp:
+            qs = qs.filter(type_employe=type_emp)
+
+        direction_id = request.query_params.get("direction")
+        if direction_id:
+            qs = qs.filter(direction_id=direction_id)
+
+        actif = request.query_params.get("actif")
+        if actif is not None:
+            qs = qs.filter(actif=(actif.lower() == "true"))
+
+        paginator = RHPagination()
+        page      = paginator.paginate_queryset(qs, request)
+        serializer = PersonnelListSerializer(page, many=True)
+        return paginator.get_paginated_response(serializer.data)
+
+    def post(self, request):
+        data = request.data.copy()
+
+        # ── Upload des pièces jointes vers Cloudinary ──────────
+        for field in ["photo", "piece_identite", "rib", "autres_pieces"]:
+            f = request.FILES.get(field)
+            if f:
+                try:
+                    url = upload_fichier(f, folder=f"rh/{field}")
+                    data[field] = url
+                    print(f"[RH][UPLOAD] {field} → {url}")
+                except Exception as e:
+                    print(f"[RH][UPLOAD ERROR] {field}: {e}")
+
+        serializer = PersonnelDetailSerializer(data=data)
+        if serializer.is_valid():
+            agent = serializer.save(created_by=request.user)
+            # Créer le solde congé si contractuel
+            if agent.type_employe == "contractuel":
+                sc, _ = SoldeConge.objects.get_or_create(personnel=agent)
+                sc.recalcul_acquis()
+            # Créer l'assurance maladie automatiquement
+            AssuranceMaladie.objects.get_or_create(
+                personnel=agent,
+                defaults={"date_adhesion": agent.date_debut}
+            )
+            return _created(PersonnelDetailSerializer(agent).data)
+        return _bad(serializer.errors)
+
+
+# ══════════════════════════════════════════════════════════════
+#  PERSONNEL — DETAIL / UPDATE / DELETE
+# ══════════════════════════════════════════════════════════════
+
+class PersonnelDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        obj = get_object_or_404(Personnel, pk=pk)
+        return _ok(PersonnelDetailSerializer(obj).data)
+
+    def patch(self, request, pk):
+        obj  = get_object_or_404(Personnel, pk=pk)
+        data = request.data.copy()
+
+        for field in ["photo", "piece_identite", "rib", "autres_pieces"]:
+            f = request.FILES.get(field)
+            if f:
+                try:
+                    url = upload_fichier(f, folder=f"rh/{field}")
+                    data[field] = url
+                except Exception as e:
+                    print(f"[RH][UPLOAD ERROR] {field}: {e}")
+
+        s = PersonnelDetailSerializer(obj, data=data, partial=True)
+        if s.is_valid():
+            agent = s.save()
+            return _ok(PersonnelDetailSerializer(agent).data)
+        return _bad(s.errors)
+
+    def delete(self, request, pk):
+        get_object_or_404(Personnel, pk=pk).delete()
+        return _no_content()
+
+
+# ══════════════════════════════════════════════════════════════
+#  PERSONNEL — PDF FICHE
+# ══════════════════════════════════════════════════════════════
+
+class PersonnelPDFView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        agent = get_object_or_404(Personnel, pk=pk)
+        pdf   = _build_pdf_fiche_agent(agent)
+        resp  = HttpResponse(pdf, content_type="application/pdf")
+        fname = f"agent_{agent.matricule_interne}.pdf"
+        resp["Content-Disposition"] = f'attachment; filename="{fname}"'
+        return resp
+
+
+# ══════════════════════════════════════════════════════════════
+#  CONGÉS — LIST / CREATE
+# ══════════════════════════════════════════════════════════════
+
+class CongeListCreateView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        qs = DemandeConge.objects.select_related("personnel", "valide_par_sup", "valide_par_drh").all()
+
+        personnel_id = request.query_params.get("personnel")
+        if personnel_id:
+            qs = qs.filter(personnel_id=personnel_id)
+
+        statut = request.query_params.get("statut")
+        if statut:
+            qs = qs.filter(statut=statut)
+
+        annee = request.query_params.get("annee")
+        if annee:
+            qs = qs.filter(date_debut__year=annee)
+
+        paginator = RHPagination()
+        page      = paginator.paginate_queryset(qs, request)
+        return paginator.get_paginated_response(DemandeCongeSerializer(page, many=True).data)
+
+    def post(self, request):
+        s = DemandeCongeSerializer(data=request.data)
+        if s.is_valid():
+            conge = s.save()
+            return _created(DemandeCongeSerializer(conge).data)
+        return _bad(s.errors)
+
+
+# ══════════════════════════════════════════════════════════════
+#  CONGÉS — DETAIL
+# ══════════════════════════════════════════════════════════════
+
+class CongeDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        obj = get_object_or_404(DemandeConge, pk=pk)
+        return _ok(DemandeCongeSerializer(obj).data)
+
+    def patch(self, request, pk):
+        obj = get_object_or_404(DemandeConge, pk=pk)
+        s   = DemandeCongeSerializer(obj, data=request.data, partial=True)
+        if s.is_valid():
+            s.save()
+            return _ok(s.data)
+        return _bad(s.errors)
+
+    def delete(self, request, pk):
+        get_object_or_404(DemandeConge, pk=pk).delete()
+        return _no_content()
+
+
+# ══════════════════════════════════════════════════════════════
+#  CONGÉS — VALIDATION
+# ══════════════════════════════════════════════════════════════
+
+class CongeValidationView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, pk):
+        conge = get_object_or_404(DemandeConge, pk=pk)
+        s = ValidationCongeSerializer(data=request.data)
+        if not s.is_valid():
+            return _bad(s.errors)
+
+        action      = s.validated_data["action"]
+        commentaire = s.validated_data.get("commentaire", "")
+        now         = timezone.now()
+
+        if action == "valider_sup":
+            if conge.statut != "en_attente":
+                return _bad({"detail": "Le congé n'est pas en attente."})
+            conge.statut          = "validee_sup"
+            conge.valide_par_sup  = request.user
+            conge.date_valid_sup  = now
+
+        elif action == "valider_drh":
+            if conge.statut != "validee_sup":
+                return _bad({"detail": "Le congé doit d'abord être validé par le supérieur."})
+            conge.statut         = "validee_drh"
+            conge.valide_par_drh = request.user
+            conge.date_valid_drh = now
+            if commentaire:
+                conge.commentaire_rh = commentaire
+            # Mettre à jour le solde pour les contractuels
+            _mettre_a_jour_solde(conge)
+            # Générer l'autorisation d'absence
+            _generer_autorisation(conge)
+
+        elif action == "refuser":
+            conge.statut         = "refusee"
+            conge.commentaire_rh = commentaire
+
+        elif action == "annuler":
+            conge.statut = "annulee"
+
+        conge.save()
+        return _ok({
+            "detail": f"Congé {action} avec succès.",
+            "conge":  DemandeCongeSerializer(conge).data,
+        })
+
+
+def _mettre_a_jour_solde(conge):
+    """Met à jour le solde de congé pour les contractuels."""
+    if conge.personnel.type_employe != "contractuel":
+        return
+    sc, _ = SoldeConge.objects.get_or_create(personnel=conge.personnel)
+    sc.recalcul_acquis()
+    sc.jours_pris += conge.nombre_jours
+    sc.save()
+
+
+def _generer_autorisation(conge):
+    """Génère une autorisation d'absence lors de la validation DRH."""
+    AutorisationAbsence.objects.get_or_create(conge=conge)
+
+
+# ══════════════════════════════════════════════════════════════
+#  CONGÉS — PDF AUTORISATION D'ABSENCE
+# ══════════════════════════════════════════════════════════════
+
+class AutorisationPDFView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        conge = get_object_or_404(DemandeConge, pk=pk)
+        aut   = get_object_or_404(AutorisationAbsence, conge=conge)
+        pdf   = _build_pdf_autorisation(conge, aut)
+        resp  = HttpResponse(pdf, content_type="application/pdf")
+        resp["Content-Disposition"] = f'attachment; filename="autorisation_{aut.numero}.pdf"'
+        return resp
+
+
+# ══════════════════════════════════════════════════════════════
+#  SOLDE CONGÉS
+# ══════════════════════════════════════════════════════════════
+
+class SoldeCongeView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk=None):
+        if pk:
+            obj = get_object_or_404(SoldeConge, personnel_id=pk)
+            obj.recalcul_acquis()
+            return _ok(SoldeCongeSerializer(obj).data)
+        qs = SoldeConge.objects.select_related("personnel").all()
+        return _ok(SoldeCongeSerializer(qs, many=True).data)
+
+
+# ══════════════════════════════════════════════════════════════
+#  ASSURANCE MALADIE
+# ══════════════════════════════════════════════════════════════
+
+class AssuranceListView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        qs = AssuranceMaladie.objects.select_related(
+            "personnel", "personnel__direction", "personnel__fonction"
+        ).all()
+        search = request.query_params.get("search", "").strip()
+        if search:
+            qs = qs.filter(
+                Q(personnel__nom__icontains=search) |
+                Q(personnel__prenom__icontains=search) |
+                Q(numero_carte__icontains=search)
+            )
+        paginator = RHPagination()
+        page      = paginator.paginate_queryset(qs, request)
+        return paginator.get_paginated_response(AssuranceMaladieSerializer(page, many=True).data)
+
+
+class AssuranceDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        obj = get_object_or_404(AssuranceMaladie, personnel_id=pk)
+        return _ok(AssuranceMaladieSerializer(obj).data)
+
+    def patch(self, request, pk):
+        obj = get_object_or_404(AssuranceMaladie, personnel_id=pk)
+        s   = AssuranceMaladieSerializer(obj, data=request.data, partial=True)
+        if s.is_valid():
+            s.save()
+            return _ok(s.data)
+        return _bad(s.errors)
+
+
+# ══════════════════════════════════════════════════════════════
+#  TABLEAU DE BORD / STATS
+# ══════════════════════════════════════════════════════════════
+
+class RHStatsView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        today = timezone.now().date()
+        data  = {
+            "total_personnel":   Personnel.objects.count(),
+            "fonctionnaires":    Personnel.objects.filter(type_employe="fonctionnaire").count(),
+            "contractuels":      Personnel.objects.filter(type_employe="contractuel").count(),
+            "actifs":            Personnel.objects.filter(actif=True).count(),
+            "inactifs":          Personnel.objects.filter(actif=False).count(),
+            "conges_en_attente": DemandeConge.objects.filter(statut="en_attente").count(),
+            "conges_valides":    DemandeConge.objects.filter(statut="validee_drh").count(),
+            "cnss_expires":      Personnel.objects.filter(
+                                     cnss_date_fin__lte=today, actif=True
+                                 ).count(),
+            "masse_salariale":   Personnel.objects.filter(actif=True).aggregate(
+                                     total=Sum("net_a_payer")
+                                 )["total"] or 0,
+        }
+        return _ok(RHStatsSerializer(data).data)
+
+
+# ══════════════════════════════════════════════════════════════
+#  PDF — FICHE AGENT (fpdf2)
+# ══════════════════════════════════════════════════════════════
+
+def _build_pdf_fiche_agent(agent):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_margins(20, 15, 20)
+
+    # ── Bandeau tricolore ────────────────────────────────────
+    pdf.set_fill_color(*ROUGE); pdf.rect(0, 0, 70,  4, "F")
+    pdf.set_fill_color(*JAUNE); pdf.rect(70, 0, 70, 4, "F")
+    pdf.set_fill_color(*VERT);  pdf.rect(140,0, 70, 4, "F")
+
+    # ── En-tête ──────────────────────────────────────────────
+    pdf.set_y(10)
+    pdf.set_font("Helvetica", "B", 14)
+    pdf.set_text_color(*DARK)
+    pdf.cell(0, 8, "MPCID — Institut National de la Statistique", ln=True)
+    pdf.set_font("Helvetica", "", 9)
+    pdf.set_text_color(*TEXT)
+    pdf.cell(0, 5, "République de Guinée · Fiche de Personnel", ln=True)
+    pdf.ln(4)
+
+    # Ligne séparatrice verte
+    pdf.set_draw_color(*VERT)
+    pdf.set_line_width(0.8)
+    pdf.line(20, pdf.get_y(), 190, pdf.get_y())
+    pdf.ln(6)
+
+    # ── Bloc identification ──────────────────────────────────
+    pdf.set_font("Helvetica", "B", 11)
+    pdf.set_text_color(*VERT)
+    pdf.cell(0, 7, f"{agent.prenom.upper()} {agent.nom.upper()}", ln=True)
+    pdf.set_font("Helvetica", "", 9)
+    pdf.set_text_color(*TEXT)
+    pdf.cell(0, 5, f"Matricule : {agent.matricule_interne}   |   Type : {agent.get_type_employe_display()}", ln=True)
+    if agent.matricule_fp:
+        pdf.cell(0, 5, f"Matricule Fonction Publique : {agent.matricule_fp}", ln=True)
+    pdf.ln(4)
+
+    def section(titre):
+        pdf.set_font("Helvetica", "B", 9)
+        pdf.set_text_color(*VERT)
+        pdf.set_fill_color(*GRIS)
+        pdf.cell(0, 6, f"  {titre}", ln=True, fill=True)
+        pdf.set_font("Helvetica", "", 9)
+        pdf.set_text_color(*DARK)
+        pdf.ln(1)
+
+    def champ(label, valeur, w1=55):
+        pdf.set_font("Helvetica", "B", 8)
+        pdf.set_text_color(*TEXT)
+        pdf.cell(w1, 6, f"{label} :", border="B")
+        pdf.set_font("Helvetica", "", 9)
+        pdf.set_text_color(*DARK)
+        pdf.cell(0, 6, str(valeur) if valeur else "—", border="B", ln=True)
+
+    def deux_champs(l1, v1, l2, v2):
+        pdf.set_font("Helvetica", "B", 8)
+        pdf.set_text_color(*TEXT)
+        pdf.cell(35, 6, f"{l1} :", border="B")
+        pdf.set_font("Helvetica", "", 9)
+        pdf.set_text_color(*DARK)
+        pdf.cell(55, 6, str(v1) if v1 else "—", border="B")
+        pdf.set_font("Helvetica", "B", 8)
+        pdf.set_text_color(*TEXT)
+        pdf.cell(35, 6, f"  {l2} :", border="B")
+        pdf.set_font("Helvetica", "", 9)
+        pdf.set_text_color(*DARK)
+        pdf.cell(0, 6, str(v2) if v2 else "—", border="B", ln=True)
+
+    # ── Identité ────────────────────────────────────────────
+    section("IDENTITÉ")
+    deux_champs("Date de naissance", agent.date_naissance, "Lieu de naissance", agent.lieu_naissance)
+    deux_champs("Sexe", agent.get_sexe_display(), "Nationalité", agent.nationalite)
+    champ("Adresse résidentielle", agent.adresse)
+    deux_champs("Email", agent.email, "Téléphone", agent.telephone)
+    pdf.ln(3)
+
+    # ── Poste ────────────────────────────────────────────────
+    section("POSTE & AFFECTATION")
+    deux_champs("Direction", agent.direction, "Fonction", agent.fonction)
+    deux_champs("Date de début", agent.date_debut, "Date de fin", agent.date_fin or "En cours")
+    pdf.ln(3)
+
+    # ── Diplôme ──────────────────────────────────────────────
+    if agent.diplome:
+        section("FORMATION & DIPLÔME")
+        champ("Diplôme", agent.diplome)
+        deux_champs("Date d'obtention", agent.diplome_date, "Lieu", agent.diplome_lieu)
+        pdf.ln(3)
+
+    # ── Rémunération ─────────────────────────────────────────
+    section("RÉMUNÉRATION")
+    def fmt_gnf(v):
+        try:
+            return f"{float(v):,.0f} GNF".replace(",", " ")
+        except Exception:
+            return str(v)
+    deux_champs("Salaire de base", fmt_gnf(agent.salaire), "Prime", fmt_gnf(agent.prime) if agent.type_employe == "fonctionnaire" else "—")
+    pdf.set_font("Helvetica", "B", 9)
+    pdf.set_text_color(*VERT)
+    pdf.cell(0, 7, f"  Net à payer : {fmt_gnf(agent.net_a_payer)}", ln=True)
+    pdf.set_text_color(*DARK)
+    pdf.ln(2)
+
+    # ── CNSS ─────────────────────────────────────────────────
+    if agent.cnss_id:
+        section("CNSS")
+        champ("ID CNSS", agent.cnss_id)
+        deux_champs("Date de début", agent.cnss_date_debut, "Date de fin", agent.cnss_date_fin or "—")
+        pdf.ln(3)
+
+    # ── Footer ───────────────────────────────────────────────
+    pdf.set_y(-18)
+    pdf.set_draw_color(*BORDER)
+    pdf.set_line_width(0.3)
+    pdf.line(20, pdf.get_y(), 190, pdf.get_y())
+    pdf.ln(2)
+    pdf.set_font("Helvetica", "", 8)
+    pdf.set_text_color(*TEXT)
+    pdf.cell(0, 5, f"Document généré le {timezone.now().strftime('%d/%m/%Y')} — Système de Gestion RH — INS Guinée", align="C")
+
+    return bytes(pdf.output())
+
+
+# ══════════════════════════════════════════════════════════════
+#  PDF — AUTORISATION D'ABSENCE (fpdf2)
+# ══════════════════════════════════════════════════════════════
+
+def _build_pdf_autorisation(conge, aut):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_margins(20, 15, 20)
+
+    # Bandeau
+    pdf.set_fill_color(*ROUGE); pdf.rect(0, 0, 70,  4, "F")
+    pdf.set_fill_color(*JAUNE); pdf.rect(70, 0, 70, 4, "F")
+    pdf.set_fill_color(*VERT);  pdf.rect(140,0, 70, 4, "F")
+
+    pdf.set_y(12)
+    pdf.set_font("Helvetica", "B", 13)
+    pdf.set_text_color(*DARK)
+    pdf.cell(0, 8, "MPCID — Institut National de la Statistique", ln=True, align="C")
+    pdf.set_font("Helvetica", "", 9)
+    pdf.set_text_color(*TEXT)
+    pdf.cell(0, 5, "République de Guinée", ln=True, align="C")
+    pdf.ln(5)
+
+    # Titre
+    pdf.set_fill_color(*VERT)
+    pdf.set_text_color(255, 255, 255)
+    pdf.set_font("Helvetica", "B", 12)
+    pdf.cell(0, 10, "AUTORISATION D'ABSENCE", ln=True, fill=True, align="C")
+    pdf.ln(5)
+
+    # Numéro
+    pdf.set_font("Helvetica", "B", 10)
+    pdf.set_text_color(*VERT)
+    pdf.cell(0, 6, f"Référence : {aut.numero}", ln=True, align="C")
+    pdf.set_font("Helvetica", "", 9)
+    pdf.set_text_color(*TEXT)
+    pdf.cell(0, 5, f"Date de délivrance : {aut.date_generation.strftime('%d/%m/%Y')}", ln=True, align="C")
+    pdf.ln(8)
+
+    agent = conge.personnel
+
+    # Corps
+    pdf.set_font("Helvetica", "", 10)
+    pdf.set_text_color(*DARK)
+    texte = (
+        f"Nous soussignés, Direction des Ressources Humaines de l'Institut National de la "
+        f"Statistique (INS), autorisons :"
+    )
+    pdf.multi_cell(0, 6, texte)
+    pdf.ln(5)
+
+    # Bloc agent
+    pdf.set_fill_color(*GRIS)
+    pdf.set_draw_color(*BORDER)
+    pdf.set_line_width(0.3)
+    pdf.set_font("Helvetica", "B", 11)
+    pdf.set_text_color(*VERT)
+    pdf.cell(0, 9, f"  {agent.prenom.upper()} {agent.nom.upper()}", ln=True, fill=True)
+    pdf.set_font("Helvetica", "", 9)
+    pdf.set_text_color(*DARK)
+    pdf.cell(0, 6, f"  Matricule : {agent.matricule_interne}   |   Fonction : {agent.fonction or '—'}   |   Direction : {agent.direction or '—'}", ln=True, fill=True)
+    pdf.ln(6)
+
+    # Détail congé
+    pdf.set_font("Helvetica", "", 10)
+    pdf.set_text_color(*DARK)
+    d1   = conge.date_debut.strftime("%d/%m/%Y")
+    d2   = conge.date_fin.strftime("%d/%m/%Y")
+    nj   = conge.nombre_jours
+    type_label = dict(DemandeConge.TYPE_CHOICES).get(conge.type_conge, conge.type_conge)
+    texte2 = (
+        f"À bénéficier d'un {type_label.lower()} du {d1} au {d2} "
+        f"({nj} jour{'s' if nj > 1 else ''} calendaire{'s' if nj > 1 else ''})."
+    )
+    pdf.multi_cell(0, 7, texte2)
+
+    if conge.motif:
+        pdf.ln(3)
+        pdf.set_font("Helvetica", "B", 9)
+        pdf.set_text_color(*TEXT)
+        pdf.cell(30, 6, "Motif :")
+        pdf.set_font("Helvetica", "", 9)
+        pdf.set_text_color(*DARK)
+        pdf.multi_cell(0, 6, conge.motif)
+
+    pdf.ln(14)
+
+    # Signatures
+    pdf.set_font("Helvetica", "B", 9)
+    pdf.set_text_color(*DARK)
+    col = 85
+    pdf.cell(col, 6, "L'Intéressé(e)", align="C")
+    pdf.cell(col, 6, "La Direction des RH", align="C", ln=True)
+    pdf.ln(14)
+    pdf.set_draw_color(*BORDER)
+    x = pdf.get_x()
+    y = pdf.get_y()
+    pdf.line(x + 10,  y, x + col - 10,  y)
+    pdf.line(x + col + 10, y, x + col * 2 - 10, y)
+
+    # Footer
+    pdf.set_y(-18)
+    pdf.set_font("Helvetica", "", 7)
+    pdf.set_text_color(*TEXT)
+    pdf.cell(0, 5, f"Document généré le {timezone.now().strftime('%d/%m/%Y')} — INS Guinée — Système de Gestion RH", align="C")
+
+    return bytes(pdf.output())
+
+
+# ══════════════════════════════════════════════════════════════
+#  HELPERS HTTP
+# ══════════════════════════════════════════════════════════════
+
+from rest_framework.response import Response
+
+def _ok(data):
+    return Response(data, status=status.HTTP_200_OK)
+
+def _created(data):
+    return Response(data, status=status.HTTP_201_CREATED)
+
+def _bad(errors):
+    return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+
+def _no_content():
+    return Response(status=status.HTTP_204_NO_CONTENT)

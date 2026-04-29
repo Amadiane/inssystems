@@ -29,7 +29,22 @@ from .views import (
     CourrierSortantPDFView,
     ArchivePDFView,
 )
-
+from .views import (
+    # Référentiels
+    DirectionListCreateView, DirectionDetailView,
+    FonctionListCreateView,  FonctionDetailView,
+    # Personnel
+    PersonnelListCreateView, PersonnelDetailView, PersonnelPDFView,
+    # Congés
+    CongeListCreateView, CongeDetailView, CongeValidationView,
+    AutorisationPDFView,
+    # Solde congés
+    SoldeCongeView,
+    # Assurance maladie
+    AssuranceListView, AssuranceDetailView,
+    # Stats
+    RHStatsView,
+)
 
 
 router = DefaultRouter()
@@ -106,6 +121,63 @@ urlpatterns = [
  
     # PDF Archive
     path('archives/<int:pk>/pdf/',            ArchivePDFView.as_view(),          name='archive-pdf'),
+
+
+
+
+
+
+
+
+
+    # ── Référentiels ─────────────────────────────────────────
+    path("directions/",                      DirectionListCreateView.as_view()),
+    path("directions/<int:pk>/",             DirectionDetailView.as_view()),
+ 
+    path("fonctions/",                       FonctionListCreateView.as_view()),
+    path("fonctions/<int:pk>/",              FonctionDetailView.as_view()),
+ 
+    # ── Personnel ────────────────────────────────────────────
+    # GET  /api/rh/personnel/           → liste paginée + filtres
+    # POST /api/rh/personnel/           → créer un agent (FormData avec fichiers)
+    path("personnel/",                       PersonnelListCreateView.as_view()),
+ 
+    # GET    /api/rh/personnel/<pk>/    → détail complet
+    # PATCH  /api/rh/personnel/<pk>/    → modifier
+    # DELETE /api/rh/personnel/<pk>/    → supprimer
+    path("personnel/<int:pk>/",              PersonnelDetailView.as_view()),
+ 
+    # GET /api/rh/personnel/<pk>/pdf/   → télécharger fiche PDF
+    path("personnel/<int:pk>/pdf/",          PersonnelPDFView.as_view()),
+ 
+    # ── Congés ───────────────────────────────────────────────
+    # GET  /api/rh/conges/              → liste + filtres (personnel, statut, annee)
+    # POST /api/rh/conges/              → créer une demande
+    path("conges/",                          CongeListCreateView.as_view()),
+ 
+    # GET    /api/rh/conges/<pk>/       → détail
+    # PATCH  /api/rh/conges/<pk>/       → modifier
+    # DELETE /api/rh/conges/<pk>/       → supprimer
+    path("conges/<int:pk>/",                 CongeDetailView.as_view()),
+ 
+    # POST /api/rh/conges/<pk>/valider/ → valider_sup | valider_drh | refuser | annuler
+    path("conges/<int:pk>/valider/",         CongeValidationView.as_view()),
+ 
+    # GET /api/rh/conges/<pk>/autorisation/pdf/ → PDF autorisation d'absence
+    path("conges/<int:pk>/autorisation/pdf/",AutorisationPDFView.as_view()),
+ 
+    # ── Solde congés ─────────────────────────────────────────
+    # GET /api/rh/soldes/               → tous les soldes
+    path("soldes/",                          SoldeCongeView.as_view()),
+    # GET /api/rh/soldes/<pk>/          → solde d'un agent (pk = personnel id)
+    path("soldes/<int:pk>/",                 SoldeCongeView.as_view()),
+ 
+    # ── Assurance maladie ────────────────────────────────────
+    # GET /api/rh/assurances/           → tableau assurance (filtrable)
+    path("assurances/",                      AssuranceListView.as_view()),
+    # GET   /api/rh/assurances/<pk>/    → détail (pk = personnel id)
+    # PATCH /api/rh/assurances/<pk>/    → mettre à jour
+    path("assurances/<int:pk>/",             AssuranceDetailView.as_view()),
 ]
  
   
